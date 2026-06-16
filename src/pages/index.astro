@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timer from '../components/Timer.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
+import { site } from '../config/site';
+
+const features = [
+  {
+    icon: '📺',
+    title: 'Stays on top of presentations',
+    body: 'A passive, non-activating overlay that stays visible over full-screen apps and presentations, including Keynote and PowerPoint. Presentation-safe: it never steals focus or clicks through your slides.',
+  },
+  {
+    icon: '🪟',
+    title: 'Four placement modes',
+    body: 'Full screen, pinned on top of all windows, in the menu bar, or on top of full-screen apps. Put the timer exactly where you need it.',
+  },
+  {
+    icon: '⌨️',
+    title: 'Natural-language start',
+    body: 'Type "5 minutes", "5 min", "5 m", or "5", then press Return. No dials, no scrolling, no setup screens.',
+  },
+  {
+    icon: '🎛️',
+    title: 'Quick controls',
+    body: 'Play, pause, reset, full screen, pin, settings, and typed input. Everything one tap away.',
+  },
+  {
+    icon: '🎨',
+    title: 'Themes for any screen',
+    body: 'Blue, black, white, cream, red, transparent, frosted, Liquid Glass, dark, charcoal, and light. Match your slides or disappear into them.',
+  },
+  {
+    icon: '🔔',
+    title: 'Sounds and end behavior',
+    body: 'Subtle, louder, or off, repeated 1x, 3x, 5x, or until stopped. On finish: flash, count up after zero, auto-restart, or alarm repeat.',
+  },
+];
+---
+
+<BaseLayout title={site.name} description={site.description}>
+  <!-- Hero: dark, signature blue pill, the promise line -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Free for Mac. Windows soon.</p>
+        <h1>A timer that stays visible on top of every app. Even presentations.</h1>
+        <p class="lead">
+          Super Easy Timer stays visible over full-screen apps and presentations,
+          including Keynote and PowerPoint. Type a time, press Return, present
+          without guessing.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href={site.macAppStoreUrl} rel="noopener" target="_blank">
+            Get the free Mac app
+          </a>
+          <a class="btn btn--ghost" href="/timer">Try the web timer →</a>
+        </div>
+        <p class="hero-proof">
+          {/* TODO: real rating + review count from the App Store. */}
+          ★ {site.rating} on the Mac App Store
+          {site.reviewCount && <span> · {site.reviewCount} reviews</span>}
+        </p>
+      </div>
+
+      <div class="hero-timer">
+        <Timer initialMinutes={5} size="hero" />
+        <p class="hero-timer-note">
+          This is the live web version. Click the pill or type a time to try it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What it does</p>
+        <h2>Built to stay out of the way and on top of everything.</h2>
+      </div>
+      <div class="feature-grid">
+        {
+          features.map((f) => (
+            <FeatureCard title={f.title} icon={f.icon}>
+              {f.body}
+            </FeatureCard>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot showcase placeholder -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">See it in place</p>
+        <h2>The timer, right on top of your slides.</h2>
+      </div>
+      <div class="screenshot-grid">
+        <!-- TODO: drop real app screenshots here (overlay shots, onboarding). -->
+        <div class="screenshot-placeholder">TODO: overlay on Keynote screenshot</div>
+        <div class="screenshot-placeholder">TODO: menu-bar timer screenshot</div>
+        <div class="screenshot-placeholder">TODO: v2 onboarding screenshot</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section class="section">
+    <div class="container">
+      <DownloadCTA />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 8vw, 6rem);
+    background:
+      radial-gradient(60% 50% at 70% 0%, rgba(10, 132, 255, 0.18), transparent 70%),
+      var(--bg);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .hero-copy h1 {
+    margin-top: 0.5rem;
+  }
+  .hero-copy .lead {
+    margin-top: 1.25rem;
+  }
+  .hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero-proof {
+    margin-top: 1.25rem;
+    font-size: 0.9375rem;
+    color: var(--text-faint);
+  }
+  .hero-timer-note {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-faint);
+  }
+
+  .section-head {
+    max-width: 36ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .screenshot-placeholder {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 1rem;
+    border: 2px dashed rgba(0, 0, 0, 0.18);
+    border-radius: var(--radius-card);
+    color: var(--light-text-muted);
+    font-size: 0.875rem;
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  @media (max-width: 880px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .hero-timer {
+      order: -1;
+    }
+    .feature-grid,
+    .screenshot-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (min-width: 560px) and (max-width: 880px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

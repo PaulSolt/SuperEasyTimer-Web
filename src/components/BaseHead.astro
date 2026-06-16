@@ -1,0 +1,59 @@
+---
+import { site } from '../config/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Path-relative or absolute OG image. TODO: per-page OG images. */
+  ogImage?: string;
+  /** Set true on pages that should not be indexed. */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  ogImage = '/icon.png',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const ogImageUrl = new URL(ogImage, Astro.site ?? site.url).href;
+// Append the brand to page titles, but not if the page is the brand itself.
+const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<!-- Falls back to the app icon. TODO: add a wide 1200x630 OG image and set it as the default. -->
+<meta property="og:image" content={ogImageUrl} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Fonts: Inter (body/UI/digits) + DM Sans (display). OFL licensed. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+  rel="stylesheet"
+/>

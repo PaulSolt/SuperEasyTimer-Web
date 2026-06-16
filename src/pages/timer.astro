@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timer from '../components/Timer.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
+
+const title = 'Free online timer';
+const description =
+  'A free, full-screen online timer. Type a time in plain language, press Return, and go. No sign-up, no ads. Works in any browser.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="tool-hero">
+    <div class="container">
+      <!-- Static, indexable heading + copy (timer logic hydrates below). -->
+      <p class="eyebrow">Free web timer</p>
+      <h1>Online timer</h1>
+      <p class="lead mx-auto">
+        Type a time in plain language: "5 minutes", "25 m", or "5". Press Return
+        to start. Click the pill to pause. Go full screen for a clean countdown.
+        No sign-up, no ads.
+      </p>
+
+      <div class="tool-timer">
+        <Timer initialMinutes={5} size="full" showFullscreen={true} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container tool-info">
+      <h2>How to use the web timer</h2>
+      <ul>
+        <li><strong>Set a time:</strong> type "10 minutes", "10 m", "1:30", or "90s", then press Return.</li>
+        <li><strong>Start or pause:</strong> click the blue pill or use the Start button.</li>
+        <li><strong>Reset:</strong> the Reset button returns to your last set time.</li>
+        <li><strong>Full screen:</strong> use the Full screen button for a distraction-free countdown.</li>
+        <li><strong>Sound:</strong> a gentle tone plays when the timer finishes, after your first click.</li>
+      </ul>
+
+      <DownloadCTA />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-hero {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+    text-align: center;
+    background:
+      radial-gradient(55% 45% at 50% 0%, rgba(10, 132, 255, 0.2), transparent 70%),
+      var(--bg);
+  }
+  .tool-hero .lead {
+    margin-top: 1rem;
+    max-width: 52ch;
+  }
+  .tool-timer {
+    margin-top: 2.5rem;
+  }
+  .tool-info {
+    max-width: var(--content-width);
+  }
+  .tool-info ul {
+    margin: 1.25rem 0 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    color: var(--text-muted);
+  }
+  .tool-info strong {
+    color: var(--text);
+  }
+</style>

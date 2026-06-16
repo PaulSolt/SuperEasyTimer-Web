@@ -1,0 +1,19 @@
+{
+  "name": "super-easy-timer-web",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Marketing site for Super Easy Timer: a timer that stays visible on top of every app, even presentations.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^6.4.7"
+  }
+}

@@ -1,0 +1,126 @@
+---
+import { site } from '../config/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">{site.name}</span>
+      <p class="footer-tagline">{site.tagline}</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/download">Download</a>
+        <a href="/timer">Web Timer</a>
+        <a href="/presentation-timer">Presentation Timer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="/blog">Blog</a>
+        <a href={site.macAppStoreUrl} rel="noopener" target="_blank">Mac App Store</a>
+      </div>
+    </nav>
+
+    <!--
+      TODO: Kit.com email capture form.
+      Paste the Kit embed snippet here (or set site.kitFormId and render it).
+      Example placeholder shown until the embed is added.
+    -->
+    <div class="footer-signup">
+      <h4>Get product updates</h4>
+      {
+        site.kitFormId ? (
+          <div data-kit-form-id={site.kitFormId}>
+            {/* TODO: replace with the actual Kit.com embed script/markup. */}
+          </div>
+        ) : (
+          <p class="todo-note">
+            TODO: embed Kit.com signup form here (set <code>site.kitFormId</code> or paste the embed).
+          </p>
+        )
+      }
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {year} {site.name}. Made for people who present.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: #161618;
+    padding-block: 3.5rem 1.5rem;
+    margin-top: 2rem;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    gap: 2.5rem;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text);
+  }
+  .footer-tagline {
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+    max-width: 28ch;
+  }
+  .footer-nav {
+    display: contents;
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .footer-col h4,
+  .footer-signup h4 {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.25rem;
+  }
+  .footer-col a {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+  .footer-col a:hover {
+    color: var(--text);
+  }
+  .todo-note {
+    font-size: 0.8125rem;
+    color: var(--text-faint);
+  }
+  .todo-note code {
+    color: var(--blue);
+  }
+  .footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .footer-bottom p {
+    font-size: 0.875rem;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 760px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

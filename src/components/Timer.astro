@@ -1,0 +1,520 @@
+---
+/**
+ * The interactive web timer island.
+ * Static markup (pill, input, controls) ships in the HTML for SEO; the
+ * timer logic in the <script> hydrates in the browser. Reused on `/` and
+ * `/timer`. Multiple instances per page are supported.
+ */
+interface Props {
+  /** Starting minutes shown before the user types anything. */
+  initialMinutes?: number;
+  /** Show the fullscreen toggle (uses the browser Fullscreen API). */
+  showFullscreen?: boolean;
+  /** Visual size. 'hero' is the landing demo, 'full' is the standalone tool. */
+  size?: 'hero' | 'full';
+}
+
+const { initialMinutes = 5, showFullscreen = true, size = 'hero' } = Astro.props;
+
+const initialSeconds = Math.round(initialMinutes * 60);
+const mm = String(Math.floor(initialSeconds / 60)).padStart(2, '0');
+const ss = String(initialSeconds % 60).padStart(2, '0');
+---
+
+<div
+  class:list={['set-timer', `set-timer--${size}`]}
+  data-set-timer
+  data-initial-seconds={initialSeconds}
+>
+  <button
+    type="button"
+    class="timer-pill"
+    data-pill
+    aria-label="Start or pause the timer"
+  >
+    <span class="timer-digits" data-digits aria-live="polite">{mm}:{ss}</span>
+    <span class="timer-state" data-state-label>Tap to start</span>
+  </button>
+
+  <form class="timer-input-row" data-form>
+    <input
+      type="text"
+      class="timer-input"
+      data-input
+      inputmode="text"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="Type 5 minutes, 25 m, or 5, then press Return"
+      aria-label="Set timer duration"
+    />
+    <button type="submit" class="sr-only">Set timer</button>
+  </form>
+
+  <div class="timer-controls" role="group" aria-label="Timer controls">
+    <button type="button" class="ctrl" data-toggle aria-label="Start or pause">
+      <span data-toggle-label>Start</span>
+    </button>
+    <button type="button" class="ctrl" data-reset aria-label="Reset timer">Reset</button>
+    {
+      showFullscreen && (
+        <button type="button" class="ctrl" data-fullscreen aria-label="Toggle full screen">
+          Full screen
+        </button>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .set-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  /* The signature element: bright blue pill, white tabular digits. */
+  .timer-pill {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    width: min(100%, 460px);
+    padding: clamp(1.5rem, 5vw, 2.75rem) 2rem;
+    border: none;
+    cursor: pointer;
+    background: var(--blue);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--glow-blue);
+    transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease;
+    color: var(--digits);
+  }
+  .timer-pill:hover {
+    background: var(--blue-hover);
+  }
+  .timer-pill:active {
+    transform: scale(0.99);
+  }
+  .timer-pill:focus-visible {
+    outline: 3px solid var(--digits);
+    outline-offset: 3px;
+  }
+
+  .set-timer--full .timer-pill {
+    width: min(100%, 560px);
+  }
+
+  .timer-digits {
+    font-family: var(--font-digits);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(3.5rem, 14vw, 6.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .set-timer--full .timer-digits {
+    font-size: clamp(4rem, 18vw, 8rem);
+  }
+
+  .timer-state {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(240, 248, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Finished flash. */
+  .set-timer.is-finished .timer-pill {
+    animation: timer-flash 0.6s ease-in-out 6;
+  }
+  @keyframes timer-flash {
+    0%,
+    100% {
+      background: var(--blue);
+    }
+    50% {
+      background: #ff453a; /* macOS system red */
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .set-timer.is-finished .timer-pill {
+      animation: none;
+      background: #ff453a;
+    }
+  }
+
+  .timer-input-row {
+    width: min(100%, 460px);
+  }
+  .timer-input {
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+  .timer-input::placeholder {
+    color: var(--text-faint);
+  }
+  .timer-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.25);
+  }
+
+  .timer-controls {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ctrl {
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .ctrl:hover {
+    color: var(--text);
+    background: var(--bg-elevated-2);
+  }
+
+  /* ---- Fullscreen view -------------------------------------------------
+     A clean, dark, edge-to-edge countdown. The dark canvas fills the whole
+     screen and the digits are auto-fit to the screen by JS (see fit()). */
+  .set-timer.is-fullscreen {
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg);
+  }
+  /* Hide everything but the digits while presenting. */
+  .set-timer.is-fullscreen .timer-input-row,
+  .set-timer.is-fullscreen .timer-controls,
+  .set-timer.is-fullscreen .timer-state {
+    display: none;
+  }
+  /* The pill becomes the full dark canvas; digits sit on top. */
+  .set-timer.is-fullscreen .timer-pill {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: default;
+  }
+  .set-timer.is-fullscreen .timer-digits {
+    line-height: 1;
+  }
+  /* In fullscreen, flash the whole canvas, not just a pill. */
+  .set-timer.is-fullscreen.is-finished .timer-pill {
+    animation: timer-flash-full 0.6s ease-in-out 6;
+  }
+  @keyframes timer-flash-full {
+    0%,
+    100% {
+      background: transparent;
+    }
+    50% {
+      background: #ff453a;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .set-timer.is-fullscreen.is-finished .timer-pill {
+      animation: none;
+      background: #ff453a;
+    }
+  }
+</style>
+
+<script>
+  // Natural-language duration parser. Returns seconds, or null if unparseable.
+  function parseDuration(raw: string): number | null {
+    const input = raw.trim().toLowerCase();
+    if (!input) return null;
+
+    // Clock form: mm:ss or hh:mm:ss
+    if (input.includes(':')) {
+      const parts = input.split(':').map((p) => parseInt(p, 10));
+      if (parts.some((n) => Number.isNaN(n))) return null;
+      let secs = 0;
+      for (const p of parts) secs = secs * 60 + p;
+      return secs > 0 ? secs : null;
+    }
+
+    // Combined form: "1h 30m", "1 hour 5 min", "90s", "5 minutes", "5 m", "5"
+    let total = 0;
+    let matched = false;
+    const re = /(\d+(?:\.\d+)?)\s*(h(?:ours?|rs?)?|m(?:in(?:ute)?s?)?|s(?:ec(?:ond)?s?)?)?/g;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(input)) !== null) {
+      const value = parseFloat(m[1]);
+      if (Number.isNaN(value)) continue;
+      const unit = m[2] || '';
+      matched = true;
+      if (unit.startsWith('h')) total += value * 3600;
+      else if (unit.startsWith('s')) total += value;
+      else total += value * 60; // default and explicit minutes
+    }
+    if (!matched) return null;
+    const secs = Math.round(total);
+    return secs > 0 ? secs : null;
+  }
+
+  function formatTime(totalSeconds: number): string {
+    const s = Math.max(0, Math.round(totalSeconds));
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const sec = s % 60;
+    const pad = (n: number) => String(n).padStart(2, '0');
+    return h > 0 ? `${h}:${pad(m)}:${pad(sec)}` : `${pad(m)}:${pad(sec)}`;
+  }
+
+  class SetTimer {
+    root: HTMLElement;
+    digitsEl: HTMLElement;
+    stateLabel: HTMLElement;
+    toggleLabel: HTMLElement;
+    pill: HTMLButtonElement;
+    input: HTMLInputElement;
+    form: HTMLFormElement;
+
+    initialSeconds: number;
+    remaining: number;
+    running = false;
+    endsAt = 0;
+    rafId = 0;
+    lastLen = 0;
+    audioCtx: AudioContext | null = null;
+
+    constructor(root: HTMLElement) {
+      this.root = root;
+      this.digitsEl = root.querySelector('[data-digits]')!;
+      this.stateLabel = root.querySelector('[data-state-label]')!;
+      this.toggleLabel = root.querySelector('[data-toggle-label]')!;
+      this.pill = root.querySelector('[data-pill]')!;
+      this.input = root.querySelector('[data-input]')!;
+      this.form = root.querySelector('[data-form]')!;
+
+      this.initialSeconds = Number(root.dataset.initialSeconds) || 300;
+      this.remaining = this.initialSeconds;
+
+      this.bind();
+      this.render();
+    }
+
+    bind() {
+      this.pill.addEventListener('click', () => this.toggle());
+      this.form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.applyInput();
+      });
+
+      this.root
+        .querySelector('[data-toggle]')
+        ?.addEventListener('click', () => this.toggle());
+      this.root
+        .querySelector('[data-reset]')
+        ?.addEventListener('click', () => this.reset());
+      this.root
+        .querySelector('[data-fullscreen]')
+        ?.addEventListener('click', () => this.toggleFullscreen());
+
+      // Keep the class in sync whether fullscreen is toggled by button or Esc.
+      document.addEventListener('fullscreenchange', () => this.onFullscreenChange());
+      window.addEventListener('resize', () => this.fit());
+    }
+
+    applyInput() {
+      const secs = parseDuration(this.input.value);
+      if (secs === null) {
+        this.input.classList.add('shake');
+        this.stateLabel.textContent = "Try '5 minutes' or '25 m'";
+        setTimeout(() => this.input.classList.remove('shake'), 400);
+        return;
+      }
+      this.initialSeconds = secs;
+      this.remaining = secs;
+      this.input.value = '';
+      this.input.blur();
+      this.start();
+    }
+
+    toggle() {
+      // First interaction unlocks audio.
+      this.ensureAudio();
+      this.running ? this.pause() : this.start();
+    }
+
+    start() {
+      if (this.remaining <= 0) this.remaining = this.initialSeconds;
+      this.root.classList.remove('is-finished');
+      this.running = true;
+      this.endsAt = performance.now() + this.remaining * 1000;
+      this.toggleLabel.textContent = 'Pause';
+      this.stateLabel.textContent = 'Running';
+      this.tick();
+    }
+
+    pause() {
+      this.running = false;
+      cancelAnimationFrame(this.rafId);
+      this.toggleLabel.textContent = 'Start';
+      this.stateLabel.textContent = 'Paused';
+    }
+
+    reset() {
+      this.running = false;
+      cancelAnimationFrame(this.rafId);
+      this.remaining = this.initialSeconds;
+      this.root.classList.remove('is-finished');
+      this.toggleLabel.textContent = 'Start';
+      this.stateLabel.textContent = 'Tap to start';
+      this.render();
+    }
+
+    tick = () => {
+      if (!this.running) return;
+      this.remaining = (this.endsAt - performance.now()) / 1000;
+      if (this.remaining <= 0) {
+        this.remaining = 0;
+        this.render();
+        this.finish();
+        return;
+      }
+      this.render();
+      this.rafId = requestAnimationFrame(this.tick);
+    };
+
+    finish() {
+      this.running = false;
+      this.root.classList.add('is-finished');
+      this.toggleLabel.textContent = 'Start';
+      this.stateLabel.textContent = "Time's up";
+      this.beep();
+    }
+
+    render() {
+      const text = formatTime(this.remaining);
+      this.digitsEl.textContent = text;
+      // Refit only when the digit count changes (e.g. crossing an hour),
+      // since tabular-nums keeps equal-length strings the same width.
+      if (this.isFullscreen() && text.length !== this.lastLen) {
+        this.fit();
+      }
+    }
+
+    // ---- Fullscreen sizing ---------------------------------------------
+    isFullscreen() {
+      return document.fullscreenElement === this.root;
+    }
+
+    onFullscreenChange() {
+      const active = this.isFullscreen();
+      this.root.classList.toggle('is-fullscreen', active);
+      if (active) {
+        this.fit();
+      } else {
+        this.digitsEl.style.fontSize = '';
+        this.lastLen = 0;
+      }
+    }
+
+    // Scale the digits to fill the screen (width and height) when fullscreen.
+    fit() {
+      if (!this.isFullscreen()) return;
+      const availW = this.root.clientWidth * 0.9;
+      const availH = this.root.clientHeight * 0.8;
+      const base = 100;
+      this.digitsEl.style.fontSize = `${base}px`;
+      const rect = this.digitsEl.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+      const scale = Math.min(availW / rect.width, availH / rect.height);
+      this.digitsEl.style.fontSize = `${Math.floor(base * scale)}px`;
+      this.lastLen = (this.digitsEl.textContent || '').length;
+    }
+
+    // ---- Audio (created on a user gesture to respect autoplay rules) ----
+    ensureAudio() {
+      if (this.audioCtx) return;
+      try {
+        const AC =
+          window.AudioContext ||
+          (window as unknown as { webkitAudioContext: typeof AudioContext })
+            .webkitAudioContext;
+        this.audioCtx = new AC();
+      } catch {
+        this.audioCtx = null;
+      }
+    }
+
+    beep() {
+      const ctx = this.audioCtx;
+      if (!ctx) return;
+      // Three short tones.
+      const now = ctx.currentTime;
+      for (let i = 0; i < 3; i++) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = 880;
+        const t = now + i * 0.4;
+        gain.gain.setValueAtTime(0, t);
+        gain.gain.linearRampToValueAtTime(0.25, t + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.32);
+      }
+    }
+
+    toggleFullscreen() {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        this.root.requestFullscreen?.();
+      }
+    }
+  }
+
+  // Hydrate every timer instance on the page.
+  document.querySelectorAll<HTMLElement>('[data-set-timer]').forEach((el) => {
+    new SetTimer(el);
+  });
+</script>
+
+<style is:global>
+  /* Shake animation for invalid input (global so the class can be toggled). */
+  .timer-input.shake {
+    animation: timer-shake 0.4s ease;
+    border-color: #ff453a;
+  }
+  @keyframes timer-shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-6px);
+    }
+    75% {
+      transform: translateX(6px);
+    }
+  }
+</style>

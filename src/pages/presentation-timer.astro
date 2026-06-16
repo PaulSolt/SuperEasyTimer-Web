@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timer from '../components/Timer.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
+
+const title = 'Presentation timer for Keynote & PowerPoint';
+const description =
+  'A presentation timer that stays visible on top of Keynote and PowerPoint, even in full-screen mode. Type your talk length, present, and never run long again. Free on Mac.';
+
+const points = [
+  {
+    icon: '📺',
+    title: 'Stays on top of full-screen slides',
+    body: 'Keynote and PowerPoint go full screen and hide everything else. Super Easy Timer stays on top of the slideshow as a passive overlay, so your countdown is always in view.',
+  },
+  {
+    icon: '🎯',
+    title: 'Presentation-safe overlay',
+    body: 'Non-activating and presentation-safe. It never steals focus, never clicks through to your slides, and never shows up where it should not.',
+  },
+  {
+    icon: '⌨️',
+    title: 'Set your talk length in seconds',
+    body: 'Type "20 minutes" or "20 m" or "20", press Return. Start the timer, start your talk.',
+  },
+  {
+    icon: '⏱️',
+    title: 'Know when you run long',
+    body: 'Count up after zero to see exactly how far over you went, then tighten the talk before the real thing.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="lp-hero">
+    <div class="container">
+      <p class="eyebrow">Presentation timer</p>
+      <h1>A presentation timer that stays on top of Keynote and PowerPoint.</h1>
+      <p class="lead mx-auto">
+        Most timers vanish the moment your slides go full screen. The Super Easy
+        Timer Mac app stays on top of them: a small overlay you place anywhere on
+        screen, visible over Keynote and PowerPoint even in full-screen presenter
+        mode.
+      </p>
+
+      <p class="lp-preview-label">Try the timer (web preview)</p>
+      <div class="lp-timer">
+        <Timer initialMinutes={20} size="hero" />
+      </div>
+
+      <p class="lp-note">
+        This preview runs in your browser, so it can only show the countdown on
+        this page. To keep the timer on top of your actual slides, get the free
+        Mac app. <a href="#why-app">Here is why a website can't do it.</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="why-app" class="section section--light">
+    <div class="container why-app">
+      <h2>Why a website can't sit on top of your slides</h2>
+      <p>
+        Short answer: it can't. A web page lives inside your browser. The browser
+        cannot draw on top of other apps, and it cannot stay visible over a
+        full-screen Keynote or PowerPoint presentation. Browsers are sandboxed for
+        security, so any web timer drops behind your slideshow the moment it
+        starts. The preview above can only show a countdown on this page.
+      </p>
+      <p>
+        The Super Easy Timer Mac app is not a web page. It is a native overlay:
+      </p>
+      <ul class="why-list">
+        <li><strong>On top of full screen:</strong> stays visible over full-screen apps and presentations, including Keynote and PowerPoint.</li>
+        <li><strong>Non-activating:</strong> clicking near it never pulls you out of your slides or steals focus.</li>
+        <li><strong>Movable:</strong> drag it to any corner, off your content and away from the audience's eyes.</li>
+        <li><strong>Not a full-screen takeover:</strong> it is a small, always-visible overlay, not a page that covers your deck.</li>
+      </ul>
+      <p>
+        That behavior needs a real Mac app. The free download is below.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head mx-auto text-center">
+        <p class="eyebrow">In the Mac app</p>
+        <h2>Built for the moment your slides take over the screen.</h2>
+      </div>
+      <div class="lp-grid">
+        {
+          points.map((p) => (
+            <FeatureCard title={p.title} icon={p.icon}>
+              {p.body}
+            </FeatureCard>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--light">
+    <div class="container lp-how">
+      <h2>How to time a talk without leaving your slides</h2>
+      <ol class="lp-steps">
+        <li>Open Super Easy Timer and type your talk length, then press Return.</li>
+        <li>Choose the mode that stays on top of full-screen apps.</li>
+        <li>Start your Keynote or PowerPoint presentation.</li>
+        <li>Present. The countdown stays visible over your slides.</li>
+      </ol>
+      <p>
+        Want the full walkthrough? Read
+        <a href="/blog/presentation-timer-for-keynote">how to put a presentation timer on top of Keynote</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <DownloadCTA
+        heading="Put the timer on top of your next presentation."
+        body="Get the free Mac app. It stays visible over Keynote, PowerPoint, and any full-screen app. Windows soon."
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lp-hero {
+    padding-block: clamp(3rem, 8vw, 5.5rem);
+    text-align: center;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(10, 132, 255, 0.18), transparent 70%),
+      var(--bg);
+  }
+  .lp-hero h1 {
+    max-width: 18ch;
+    margin-inline: auto;
+    margin-top: 0.5rem;
+  }
+  .lp-hero .lead {
+    margin-top: 1.25rem;
+    max-width: 52ch;
+  }
+  .lp-preview-label {
+    margin-top: 2.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .lp-timer {
+    margin-top: 1rem;
+  }
+  .lp-note {
+    margin-top: 1.25rem;
+    font-size: 0.875rem;
+    color: var(--text-faint);
+    max-width: 52ch;
+    margin-inline: auto;
+  }
+  .why-app {
+    max-width: var(--content-width);
+  }
+  .why-app h2 {
+    margin-bottom: 1rem;
+  }
+  .why-app p {
+    margin-bottom: 1rem;
+    font-size: 1.0625rem;
+  }
+  .why-list {
+    margin: 0 0 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    font-size: 1.0625rem;
+    color: var(--light-text-muted);
+  }
+  .why-list strong {
+    color: var(--light-text);
+  }
+  .lp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 880px;
+    margin-inline: auto;
+  }
+  .lp-how {
+    max-width: var(--content-width);
+  }
+  .lp-steps {
+    margin: 1.5rem 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 1.0625rem;
+  }
+  @media (max-width: 720px) {
+    .lp-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

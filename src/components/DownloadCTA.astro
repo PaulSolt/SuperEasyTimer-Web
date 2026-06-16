@@ -1,0 +1,80 @@
+---
+import { site } from '../config/site';
+
+interface Props {
+  /** Heading text. Defaults to the web-timer funnel line from the brief. */
+  heading?: string;
+  /** Optional supporting line. */
+  body?: string;
+  /** Use the compact variant (for blog post endings). */
+  compact?: boolean;
+}
+
+const {
+  heading = 'Want it on top of every app, even presentations?',
+  body = 'This is the web version. Get the free Mac app to keep your timer visible over full-screen apps and presentations. Windows soon.',
+  compact = false,
+} = Astro.props;
+---
+
+<aside class:list={['download-cta', { 'download-cta--compact': compact }]}>
+  <div class="download-cta-inner">
+    <h2 class="download-cta-heading">{heading}</h2>
+    <p class="download-cta-body">{body}</p>
+    <div class="download-cta-actions">
+      <a
+        class="btn btn--primary"
+        href={site.macAppStoreUrl}
+        rel="noopener"
+        target="_blank"
+      >
+        Get the free Mac app
+      </a>
+      {
+        site.windowsDownloadUrl ? (
+          <a class="btn btn--secondary" href={site.windowsDownloadUrl} rel="noopener" target="_blank">
+            Download for Windows
+          </a>
+        ) : (
+          <span class="windows-soon">Windows soon</span>
+        )
+      }
+    </div>
+  </div>
+</aside>
+
+<style>
+  .download-cta {
+    background: linear-gradient(180deg, var(--bg-elevated) 0%, #232325 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+  }
+  .download-cta--compact {
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    margin-top: 2.5rem;
+  }
+  .download-cta-inner {
+    max-width: 48ch;
+    margin-inline: auto;
+  }
+  .download-cta-heading {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+  .download-cta-body {
+    margin-top: 0.875rem;
+  }
+  .download-cta-actions {
+    margin-top: 1.75rem;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .windows-soon {
+    font-size: 0.9375rem;
+    color: var(--text-faint);
+  }
+</style>

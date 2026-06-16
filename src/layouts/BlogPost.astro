@@ -1,0 +1,113 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, publishDate, keyword, cluster, ogImage } = post.data;
+
+const formattedDate = publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage}>
+  <article class="post">
+    <div class="container post-narrow">
+      <header class="post-header">
+        <a href="/blog" class="back-link">← All posts</a>
+        <p class="eyebrow">{cluster}</p>
+        <h1>{title}</h1>
+        <p class="post-meta">
+          <time datetime={publishDate.toISOString()}>{formattedDate}</time>
+          {keyword && <span class="post-keyword">Target: {keyword}</span>}
+        </p>
+      </header>
+
+      <div class="post-body">
+        <slot />
+      </div>
+
+      <DownloadCTA compact />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .post-narrow {
+    max-width: var(--content-width);
+  }
+  .back-link {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+  }
+  .post-header {
+    margin-bottom: 2.5rem;
+  }
+  .post-header .eyebrow {
+    margin-top: 1.25rem;
+  }
+  .post-meta {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: var(--text-faint);
+  }
+  .post-keyword {
+    color: var(--text-faint);
+  }
+
+  /* Long-form typography. */
+  .post-body :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .post-body :global(h3) {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .post-body :global(p) {
+    margin-bottom: 1.25rem;
+    color: var(--text-muted);
+    font-size: 1.0625rem;
+  }
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    margin: 0 0 1.25rem 1.25rem;
+    color: var(--text-muted);
+  }
+  .post-body :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .post-body :global(strong) {
+    color: var(--text);
+  }
+  .post-body :global(blockquote) {
+    margin: 1.5rem 0;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--blue);
+    color: var(--text);
+    font-style: italic;
+  }
+  .post-body :global(code) {
+    background: var(--bg-elevated);
+    padding: 0.15em 0.4em;
+    border-radius: 6px;
+    font-size: 0.9em;
+  }
+  .post-body :global(a) {
+    text-decoration: underline;
+  }
+</style>
