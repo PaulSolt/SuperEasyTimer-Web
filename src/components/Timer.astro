@@ -475,7 +475,8 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
         return;
       }
       this.input.value = '';
-      this.input.blur();
+      // Keep focus so users can quickly try another time.
+      this.input.focus();
       if (result.op === 'add') {
         this.addSeconds(result.seconds);
         return;
