@@ -14,10 +14,8 @@ const description =
     <div class="container tool-hero-inner">
       <!-- Static, indexable heading + copy (timer logic hydrates below). -->
       <p class="eyebrow">Free Full Screen Timer</p>
-      <h1>Simple timer</h1>
-      <p class="lead mx-auto">
-        A free timer in your browser. Type a time and press Return.
-      </p>
+      <h1>Simple Timer</h1>
+      <p class="lead mx-auto">Type a time and start it.</p>
 
       <div class="tool-timer">
         <Timer initialMinutes={5} size="full" showFullscreen={true} />
@@ -28,6 +26,7 @@ const description =
   <!-- Upsell: why the Mac app beats the web version -->
   <section class="section section--light">
     <div class="container upsell">
+      <h2>The Mac app does more</h2>
       <div class="upsell-video">
         <video
           src="/media/app-preview.mp4"
@@ -40,7 +39,6 @@ const description =
           aria-label="Super Easy Timer app preview"
         ></video>
       </div>
-      <h2>This is the web version. The Mac app does more.</h2>
       <p>
         The web timer is a good starter. It runs in your browser, on this page.
         The Mac app lifts the timer off the page and onto your whole screen.
@@ -109,7 +107,7 @@ const description =
     max-width: var(--content-width);
   }
   .tool-info ul {
-    margin: 1.25rem 0 0 1.25rem;
+    margin: 1.25rem 0 2.5rem 1.25rem;
     display: flex;
     flex-direction: column;
     gap: 0.625rem;

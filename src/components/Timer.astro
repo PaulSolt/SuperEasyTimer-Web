@@ -42,7 +42,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
       inputmode="text"
       autocomplete="off"
       spellcheck="false"
-      placeholder="Type a time, like 5 min"
+      placeholder="Type a time, like 5 minutes, and press Return"
       aria-label="Set timer time"
     />
     <button type="submit" class="sr-only">Set timer</button>
@@ -184,7 +184,10 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
   .ctrl {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.4rem;
+    /* Uniform width so the row never shifts (e.g. Start <-> Pause). */
+    min-width: 8.5rem;
     padding: 0.5rem 0.9rem;
     font-family: var(--font-body);
     font-size: 0.9375rem;
@@ -195,6 +198,10 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: color 0.15s ease, background 0.15s ease;
+  }
+  /* The floating fullscreen controls size to content ("Exit full screen"). */
+  .set-timer.is-fullscreen .ctrl {
+    min-width: 0;
   }
   .ctrl:hover {
     color: var(--text);
