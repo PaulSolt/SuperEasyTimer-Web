@@ -28,8 +28,8 @@ const description =
         <h2>Mac</h2>
         <p>Available now on the Mac App Store. Free.</p>
         <StoreBadge height={52} />
-        <a class="btn btn--secondary" href={site.testFlightUrl} rel="noopener" target="_blank">
-          Download the beta
+        <a class="beta-link" href={site.testFlightUrl} rel="noopener" target="_blank">
+          Or download the beta on TestFlight →
         </a>
         <p class="dl-fine">
           Requires macOS {site.minMacOS} or later. The beta uses the free
@@ -102,6 +102,13 @@ const description =
   .dl-card .btn {
     margin-top: 0.25rem;
     align-self: stretch;
+  }
+  .beta-link {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+  }
+  .beta-link:hover {
+    color: var(--blue);
   }
   .dl-card--soon {
     opacity: 0.92;
