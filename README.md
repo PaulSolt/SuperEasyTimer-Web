@@ -37,15 +37,16 @@ public/
   CNAME              custom domain for GitHub Pages (supereasytimer.com)
   robots.txt         points crawlers to the sitemap
   icon.png           App Store icon (also favicon-16/32, apple-touch-icon)
+  media/             App Preview video + App Store screenshots used on the homepage
 src/
-  config/site.ts     central config: URLs, App Store link, Kit form, ratings (most TODOs live here)
+  config/site.ts     central config: URLs, App Store + TestFlight links, min macOS, rating (most TODOs live here)
   styles/global.css  design tokens + base styles (the design system)
   components/
     BaseHead.astro   SEO meta, Open Graph, fonts
-    Header.astro     sticky nav
-    Footer.astro     footer + Kit.com signup slot (TODO)
+    Header.astro     sticky nav (CTA links straight to the Mac App Store)
+    Footer.astro     footer (no email signup)
     Timer.astro      the interactive web timer island (static markup + vanilla JS)
-    FeatureCard.astro
+    FeatureCard.astro (used on /presentation-timer)
     DownloadCTA.astro reusable download call-to-action block
   layouts/
     BaseLayout.astro page shell
@@ -53,7 +54,7 @@ src/
   content.config.ts  blog content collection schema
   content/blog/      markdown/MDX posts (committed by Paul's own pipeline)
   pages/
-    index.astro            landing page (hero + timer demo + features + download)
+    index.astro            long-form sales page (hero + web timer demo + App Preview video + 8 screenshot feature sections + download)
     presentation-timer.astro  keyword landing: presentation timer for Keynote & PowerPoint
     timer.astro           free standalone web timer tool
     download.astro        Mac + Windows download hub
@@ -105,9 +106,11 @@ Props: `initialMinutes` (default 5), `showFullscreen` (default true), `size` (`'
 
 ## Deploy (GitHub Pages + custom domain)
 
+**Status: live at https://supereasytimer.com** (GitHub Pages, custom domain, HTTPS enforced). DNS is managed at Hover.
+
 Deployment runs via `.github/workflows/deploy.yml` on every push to `main`.
 
-One-time setup:
+One-time setup (already done, kept here for reference):
 
 1. Push this repo to GitHub.
 2. In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
@@ -128,15 +131,16 @@ Most asset TODOs route through `src/config/site.ts`. Full list:
 | TODO | Where |
 | --- | --- |
 | Exact Super Easy Blue hex | `--blue` in `src/styles/global.css` |
-| App icon / logo | Done: pulled from the app's App Store icon into `public/icon.png` (+ favicons, apple-touch-icon). Replace these files to update. |
-| App screenshots (overlay + v2 onboarding) | `index.astro` screenshot grid; add an `/public/screenshots/` folder |
-| Default OG image (1200×630) | `public/og-default.png` (referenced in `BaseHead.astro`) |
+| App icon / logo | Done: app's App Store icon in `public/icon.png` (+ favicons, apple-touch-icon). Replace to update. |
+| App screenshots | Done: 8 App Store screenshots in `public/media/screenshots/`, used in the homepage feature sections. |
+| App Preview video | Done: `public/media/app-preview.mp4`, used in the homepage video section. |
+| Default OG image (1200×630) | TODO: add `public/og-default.png` and set it as the default in `BaseHead.astro` (currently falls back to `icon.png`). |
 | Per-post OG images | `ogImage` field in blog frontmatter |
-| Mac App Store URL | `site.macAppStoreUrl` (already set: `id1353137878`) |
+| Mac App Store URL | `site.macAppStoreUrl` (set: `id1353137878`) |
+| TestFlight beta URL | `site.testFlightUrl` (set; shown on `/download`) |
 | Windows download link | `site.windowsDownloadUrl` (currently `null` → renders "coming soon") |
-| Kit.com email form | `site.kitFormId` + embed in `Footer.astro` (and `download.astro` waitlist) |
-| Rating / review count | `site.rating`, `site.reviewCount` |
-| Minimum macOS version | `download.astro` |
+| Rating | `site.rating` (set: 4.7) |
+| Minimum macOS version | `site.minMacOS` (set: 15) |
 
 Search the codebase for `TODO` to find every placeholder.
 

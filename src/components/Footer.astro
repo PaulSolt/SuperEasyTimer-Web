@@ -21,32 +21,13 @@ const year = new Date().getFullYear();
         <h4>Learn</h4>
         <a href="/blog">Blog</a>
         <a href={site.macAppStoreUrl} rel="noopener" target="_blank">Mac App Store</a>
+        <a href={`mailto:${site.contactEmail}`}>Contact</a>
       </div>
     </nav>
-
-    <!--
-      TODO: Kit.com email capture form.
-      Paste the Kit embed snippet here (or set site.kitFormId and render it).
-      Example placeholder shown until the embed is added.
-    -->
-    <div class="footer-signup">
-      <h4>Get product updates</h4>
-      {
-        site.kitFormId ? (
-          <div data-kit-form-id={site.kitFormId}>
-            {/* TODO: replace with the actual Kit.com embed script/markup. */}
-          </div>
-        ) : (
-          <p class="todo-note">
-            TODO: embed Kit.com signup form here (set <code>site.kitFormId</code> or paste the embed).
-          </p>
-        )
-      }
-    </div>
   </div>
 
   <div class="container footer-bottom">
-    <p>© {year} {site.name}. Made for people who present.</p>
+    <p>© {year} {site.name}. Made with love in Rochester, New York.</p>
   </div>
 </footer>
 
@@ -59,7 +40,7 @@ const year = new Date().getFullYear();
   }
   .footer-inner {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1.2fr;
+    grid-template-columns: 1.8fr 1fr 1fr;
     gap: 2.5rem;
   }
   .brand-name {
@@ -71,7 +52,7 @@ const year = new Date().getFullYear();
   .footer-tagline {
     margin-top: 0.5rem;
     font-size: 0.9375rem;
-    max-width: 28ch;
+    max-width: 32ch;
   }
   .footer-nav {
     display: contents;
@@ -81,8 +62,7 @@ const year = new Date().getFullYear();
     flex-direction: column;
     gap: 0.6rem;
   }
-  .footer-col h4,
-  .footer-signup h4 {
+  .footer-col h4 {
     font-family: var(--font-body);
     font-size: 0.8125rem;
     font-weight: 600;
@@ -97,13 +77,6 @@ const year = new Date().getFullYear();
   }
   .footer-col a:hover {
     color: var(--text);
-  }
-  .todo-note {
-    font-size: 0.8125rem;
-    color: var(--text-faint);
-  }
-  .todo-note code {
-    color: var(--blue);
   }
   .footer-bottom {
     margin-top: 2.5rem;

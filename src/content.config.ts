@@ -19,7 +19,10 @@ const blog = defineCollection({
     keyword: z.string(),
     // Topic cluster (e.g. "Presentation timers", "Focus / productivity").
     cluster: z.string(),
-    // Optional social share image. TODO: per-post OG images.
+    // Optional hero/subject image shown at the top of the post and on the index.
+    heroImage: z.string().optional(),
+    heroAlt: z.string().optional(),
+    // Optional social share image (defaults to heroImage if set).
     ogImage: z.string().optional(),
     draft: z.boolean().default(false),
   }),

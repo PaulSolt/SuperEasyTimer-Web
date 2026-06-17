@@ -141,7 +141,7 @@ p {
 }
 
 .section {
-  padding-block: clamp(3.5rem, 9vw, 7rem);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
 }
 
 .section--light {

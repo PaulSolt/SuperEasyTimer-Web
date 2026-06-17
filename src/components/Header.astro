@@ -3,7 +3,6 @@ import { site } from '../config/site';
 
 const links = [
   { href: '/timer', label: 'Web Timer' },
-  { href: '/presentation-timer', label: 'Presentation Timer' },
   { href: '/blog', label: 'Blog' },
   { href: '/download', label: 'Download' },
 ];
@@ -37,7 +36,15 @@ const isActive = (href: string) =>
       </ul>
     </nav>
 
-    <a href="/download" class="btn btn--primary header-cta">Get the Mac app</a>
+    <a
+      href={site.macAppStoreUrl}
+      rel="noopener"
+      target="_blank"
+      class="btn btn--primary header-cta"
+    >
+      <span>Get the Mac app</span>
+      <small class="header-cta-sub">macOS {site.minMacOS}+</small>
+    </a>
   </div>
 </header>
 
@@ -98,8 +105,16 @@ const isActive = (href: string) =>
   }
 
   .header-cta {
-    padding: 0.5rem 1rem;
+    flex-direction: column;
+    gap: 1px;
+    padding: 0.4rem 1rem;
     font-size: 0.9375rem;
+    line-height: 1.1;
+  }
+  .header-cta-sub {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    opacity: 0.85;
   }
 
   /* Simple responsive collapse: hide secondary nav on small screens.

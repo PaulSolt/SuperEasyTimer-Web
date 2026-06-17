@@ -4,7 +4,7 @@ import { site } from '../config/site';
 
 const title = 'Download Super Easy Timer';
 const description =
-  'Download Super Easy Timer free on the Mac App Store. A timer that stays visible on top of every app, even presentations. Windows coming soon.';
+  'Download Super Easy Timer free on the Mac App Store, or try the TestFlight beta. A countdown timer that stays visible over full screen apps and presentations. Windows coming soon.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -13,8 +13,8 @@ const description =
       <p class="eyebrow">Download</p>
       <h1>Get Super Easy Timer.</h1>
       <p class="lead mx-auto">
-        Free on Mac. A timer that stays visible over full-screen apps and
-        presentations, including Keynote and PowerPoint.
+        Free on Mac. A countdown timer that stays visible over full screen apps
+        and presentations, including Keynote and PowerPoint.
       </p>
     </div>
   </section>
@@ -29,9 +29,12 @@ const description =
         <a class="btn btn--primary" href={site.macAppStoreUrl} rel="noopener" target="_blank">
           Download on the Mac App Store
         </a>
+        <a class="btn btn--secondary" href={site.testFlightUrl} rel="noopener" target="_blank">
+          Download the beta
+        </a>
         <p class="dl-fine">
-          <!-- TODO: confirm minimum macOS version and add it here. -->
-          TODO: minimum macOS version.
+          Requires macOS {site.minMacOS} or later. The beta uses the free
+          TestFlight app.
         </p>
       </article>
 
@@ -39,21 +42,14 @@ const description =
       <article class="card dl-card dl-card--soon">
         <span class="dl-platform">Windows</span>
         <h2>Windows</h2>
-        <p>Coming soon. Same timer, same always-on-top overlay, built for Windows.</p>
+        <p>Coming soon. Same timer, same always on top overlay, built for Windows.</p>
         {
           site.windowsDownloadUrl ? (
             <a class="btn btn--primary" href={site.windowsDownloadUrl} rel="noopener" target="_blank">
               Download for Windows
             </a>
           ) : (
-            <>
-              <span class="btn btn--secondary dl-disabled" aria-disabled="true">Coming soon</span>
-              <p class="dl-fine">
-                {/* TODO: Windows download link after launch. Consider a Kit.com
-                    waitlist signup here in the meantime. */}
-                Want to know when Windows launches? TODO: add Kit.com waitlist form.
-              </p>
-            </>
+            <span class="btn btn--secondary dl-disabled" aria-disabled="true">Coming soon</span>
           )
         }
       </article>
@@ -61,8 +57,7 @@ const description =
 
     <div class="container dl-back">
       <p>
-        Not ready to install? <a href="/timer">Try the free web timer</a> in your
-        browser first.
+        Not ready to install? <a href="/timer">Try the timer for free on the web</a>.
       </p>
     </div>
   </section>
@@ -78,7 +73,7 @@ const description =
   }
   .dl-hero .lead {
     margin-top: 1rem;
-    max-width: 48ch;
+    max-width: 50ch;
   }
   .dl-grid {
     display: grid;
@@ -86,6 +81,7 @@ const description =
     gap: 1.5rem;
     max-width: 880px;
     margin-inline: auto;
+    align-items: start;
   }
   .dl-card {
     display: flex;
@@ -105,7 +101,8 @@ const description =
     font-size: 1.75rem;
   }
   .dl-card .btn {
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
+    align-self: stretch;
   }
   .dl-card--soon {
     opacity: 0.92;

@@ -36,6 +36,17 @@ const fmt = (d: Date) =>
             {posts.map((post) => (
               <li class="post-item">
                 <a href={`/blog/${post.id}`} class="post-card card">
+                  {post.data.heroImage && (
+                    <span class="post-card-thumb">
+                      <img
+                        src={post.data.heroImage}
+                        alt={post.data.heroAlt ?? post.data.title}
+                        width="1600"
+                        height="1000"
+                        loading="lazy"
+                      />
+                    </span>
+                  )}
                   <p class="post-cluster">{post.data.cluster}</p>
                   <h2 class="post-card-title">{post.data.title}</h2>
                   <p class="post-card-desc">{post.data.description}</p>
@@ -71,11 +82,32 @@ const fmt = (d: Date) =>
     flex-direction: column;
     gap: 0.5rem;
     height: 100%;
+    padding: 0;
+    overflow: hidden;
     transition: border-color 0.15s ease, transform 0.1s ease;
   }
   .post-card:hover {
     border-color: var(--border-strong);
     transform: translateY(-2px);
+  }
+  .post-card-thumb {
+    display: block;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+  }
+  .post-card-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .post-card > :not(.post-card-thumb) {
+    margin-inline: 1.5rem;
+  }
+  .post-card > .post-cluster {
+    margin-top: 1.25rem;
+  }
+  .post-card-date {
+    margin-bottom: 1.5rem;
   }
   .post-cluster {
     font-size: 0.75rem;

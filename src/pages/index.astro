@@ -1,110 +1,148 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Timer from '../components/Timer.astro';
-import FeatureCard from '../components/FeatureCard.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
 import { site } from '../config/site';
 
-const features = [
+// Which screenshot set the homepage uses. Swap to '/media/screenshots' to
+// compare against the original set with the headline text baked in.
+const SHOTS = '/media/screenshots-clean';
+
+// Long-form sales sections. One feature per row, single column, no grids.
+const sections = [
   {
-    icon: '📺',
-    title: 'Stays on top of presentations',
-    body: 'A passive, non-activating overlay that stays visible over full-screen apps and presentations, including Keynote and PowerPoint. Presentation-safe: it never steals focus or clicks through your slides.',
+    head: 'No fiddling. Just type.',
+    body: 'Skip the dials and scroll wheels. Type "5 min", "20 minutes", "2h 30m", or "25" and press Return. Need a countdown to a clock time? Type "5pm". Add time as you go with "Add 5 min" without restarting.',
+    img: `${SHOTS}/just-type.jpg`,
+    alt: 'Typing "25 minutes" into Super Easy Timer to start a countdown.',
   },
   {
-    icon: '🪟',
-    title: 'Four placement modes',
-    body: 'Full screen, pinned on top of all windows, in the menu bar, or on top of full-screen apps. Put the timer exactly where you need it.',
+    head: 'Keep the countdown visible',
+    body: 'Keep it in the menu bar so the time sits at the top of your screen, or tuck it into a corner while you work. The timer gets out of the way and stays glanceable. Control it from any app with global keyboard shortcuts.',
+    img: `${SHOTS}/keep-visible.jpg`,
+    alt: 'Super Easy Timer in the macOS menu bar with floating and full screen options.',
   },
   {
-    icon: '⌨️',
-    title: 'Natural-language start',
-    body: 'Type "5 minutes", "5 min", "5 m", or "5", then press Return. No dials, no scrolling, no setup screens.',
+    head: 'A timer that floats on top',
+    body: 'Float the timer over every app and keep it in view while you work and switch windows. It stays on top of full screen apps and presentations too, including Keynote, PowerPoint, and Zoom, without stealing focus.',
+    img: `${SHOTS}/always-on-top.jpg`,
+    alt: 'Super Easy Timer floating on top of a full screen app.',
   },
   {
-    icon: '🎛️',
-    title: 'Quick controls',
-    body: 'Play, pause, reset, full screen, pin, settings, and typed input. Everything one tap away.',
+    head: 'Show how much time is left',
+    body: 'Make it a full screen countdown everyone in the room can read. Clear digits, no clutter. Built for classes, talks, meetings, webinars, and shared screens.',
+    img: `${SHOTS}/full-screen.jpg`,
+    alt: 'A large full screen countdown timer reading 25:00.',
   },
   {
-    icon: '🎨',
-    title: 'Themes for any screen',
-    body: 'Blue, black, white, cream, red, transparent, frosted, Liquid Glass, dark, charcoal, and light. Match your slides or disappear into them.',
+    head: 'Make the timer yours',
+    body: 'Pick from transparent, frosted, Liquid Glass, blue, red, black, white, and cream. Controls and the text input fade away while you work, then come back when you need them.',
+    img: `${SHOTS}/themes.jpg`,
+    alt: 'The theme picker showing transparent, frosted, Liquid Glass, and color themes.',
   },
   {
-    icon: '🔔',
-    title: 'Sounds and end behavior',
-    body: 'Subtle, louder, or off, repeated 1x, 3x, 5x, or until stopped. On finish: flash, count up after zero, auto-restart, or alarm repeat.',
+    head: 'Repeat timers, count up, and alarms',
+    body: 'Set repeat timers with an optional delay for breaks, routines, and sessions. Count up after zero to see how far overtime you are. Restart automatically, flash the timer, and choose how many times the alarm repeats.',
+    img: `${SHOTS}/repeat.jpg`,
+    alt: 'End-of-timer options: flash the time, count up, and restart automatically with a delay.',
   },
 ];
 ---
 
 <BaseLayout title={site.name} description={site.description}>
-  <!-- Hero: dark, signature blue pill, the promise line -->
+  <!-- Hero: the video sells the app, so it comes first -->
   <section class="hero">
     <div class="container hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">Free for Mac. Windows soon.</p>
-        <h1>A timer that stays visible on top of every app. Even presentations.</h1>
-        <p class="lead">
-          Super Easy Timer stays visible over full-screen apps and presentations,
-          including Keynote and PowerPoint. Type a time, press Return, present
-          without guessing.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn--primary" href={site.macAppStoreUrl} rel="noopener" target="_blank">
-            Get the free Mac app
-          </a>
-          <a class="btn btn--ghost" href="/timer">Try the web timer →</a>
-        </div>
-        <p class="hero-proof">
-          {/* TODO: real rating + review count from the App Store. */}
-          ★ {site.rating} on the Mac App Store
-          {site.reviewCount && <span> · {site.reviewCount} reviews</span>}
-        </p>
+      <div class="hero-video">
+        <video
+          src="/media/app-preview.mp4"
+          poster="/media/app-preview-poster.jpg"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-label="Super Easy Timer app preview"
+        ></video>
       </div>
 
-      <div class="hero-timer">
-        <Timer initialMinutes={5} size="hero" />
-        <p class="hero-timer-note">
-          This is the live web version. Click the pill or type a time to try it.
-        </p>
-      </div>
+      <h1>A timer that stays on top of every window and app.</h1>
+      <p class="lead mx-auto">
+        It floats over every app, stays visible in your menu bar, or fills the
+        whole screen.
+      </p>
+
+      <a class="store-badge" href={site.macAppStoreUrl} rel="noopener" target="_blank">
+        <img
+          src="/app-store-badge.svg"
+          alt="Download on the Mac App Store"
+          width="156"
+          height="40"
+        />
+      </a>
+
+      <a class="hero-proof" href={site.macAppStoreUrl} rel="noopener" target="_blank">
+        <strong>{site.rating}</strong><span class="star" aria-hidden="true">★</span>
+        on the Mac App Store
+      </a>
+
+      <p class="hero-alt">
+        <a href="/download">Other download options</a>
+        <span class="dot">·</span>
+        <a href="/timer">Try the free web timer</a>
+      </p>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="section">
+  <!-- Long-form feature sections, one per row -->
+  {
+    sections.map((s, i) => (
+      <section class:list={['section', 'feature', { 'feature--alt': i % 2 === 1 }]}>
+        <div class="container narrow text-center">
+          <h2>{s.head}</h2>
+          <p class="lead mx-auto">{s.body}</p>
+          <figure class="shot">
+            <img src={s.img} alt={s.alt} width="1600" height="739" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- Who it's for -->
+  <section class="section feature--alt">
+    <div class="container narrow text-center">
+      <h2>Made for people who need timers</h2>
+      <p class="lead mx-auto">
+        Speakers and teachers keep their talk on time. Focus sessions stay on
+        track. Meetings and standups end when they should. Workouts, cooking, and
+        routines get a simple repeat timer. One timer, every place you need to see
+        the time.
+      </p>
+    </div>
+  </section>
+
+  <!-- Social proof: real Mac App Store reviews -->
+  <section class="section reviews-section">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">What it does</p>
-        <h2>Built to stay out of the way and on top of everything.</h2>
+      <div class="reviews-head text-center">
+        <p class="rating-badge"><strong>{site.rating}</strong><span class="star" aria-hidden="true">★</span></p>
+        <h2>Loved by Mac users</h2>
+        <p class="lead mx-auto">Here is what people say on the Mac App Store.</p>
       </div>
-      <div class="feature-grid">
+      <ul class="reviews-grid">
         {
-          features.map((f) => (
-            <FeatureCard title={f.title} icon={f.icon}>
-              {f.body}
-            </FeatureCard>
+          site.reviews.map((r) => (
+            <li class="review card">
+              <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+              <blockquote class="review-quote">{r.quote}</blockquote>
+              <p class="review-author">{r.author}</p>
+            </li>
           ))
         }
-      </div>
-    </div>
-  </section>
-
-  <!-- Screenshot showcase placeholder -->
-  <section class="section section--light">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">See it in place</p>
-        <h2>The timer, right on top of your slides.</h2>
-      </div>
-      <div class="screenshot-grid">
-        <!-- TODO: drop real app screenshots here (overlay shots, onboarding). -->
-        <div class="screenshot-placeholder">TODO: overlay on Keynote screenshot</div>
-        <div class="screenshot-placeholder">TODO: menu-bar timer screenshot</div>
-        <div class="screenshot-placeholder">TODO: v2 onboarding screenshot</div>
-      </div>
+      </ul>
+      <p class="reviews-link text-center">
+        <a href={site.macAppStoreUrl} rel="noopener" target="_blank">Read more reviews on the Mac App Store →</a>
+      </p>
     </div>
   </section>
 
@@ -116,88 +154,200 @@ const features = [
   </section>
 </BaseLayout>
 
+<script>
+  // Nudge muted autoplay (some browsers need the property set in JS, and only
+  // start once the element is on screen).
+  document.querySelectorAll<HTMLVideoElement>('video[autoplay]').forEach((v) => {
+    v.muted = true;
+    const play = () => v.play().catch(() => {});
+    play();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) play();
+      });
+    });
+    io.observe(v);
+  });
+</script>
+
 <style>
   .hero {
-    padding-block: clamp(3rem, 8vw, 6rem);
+    padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3rem);
+    text-align: center;
     background:
-      radial-gradient(60% 50% at 70% 0%, rgba(10, 132, 255, 0.18), transparent 70%),
+      radial-gradient(60% 50% at 50% 0%, rgba(10, 132, 255, 0.18), transparent 70%),
       var(--bg);
   }
   .hero-inner {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: center;
+    max-width: 860px;
   }
-  .hero-copy h1 {
-    margin-top: 0.5rem;
+
+  /* Video is the hero. */
+  .hero-video {
+    margin: 0 auto 2rem;
+    max-width: 860px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    background: #000;
+    aspect-ratio: 16 / 9;
   }
-  .hero-copy .lead {
-    margin-top: 1.25rem;
+  .hero-video video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  .hero-actions {
-    margin-top: 2rem;
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    align-items: center;
+
+  .hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    max-width: 16ch;
+    margin-inline: auto;
   }
+  .hero .lead {
+    margin-top: 0.875rem;
+    max-width: 48ch;
+  }
+
+  .store-badge {
+    display: inline-block;
+    margin-top: 1.5rem;
+  }
+  .store-badge img {
+    height: 52px;
+    width: auto;
+  }
+  .store-badge:hover {
+    opacity: 0.85;
+  }
+
   .hero-proof {
-    margin-top: 1.25rem;
+    display: block;
+    margin-top: 0.875rem;
     font-size: 0.9375rem;
     color: var(--text-faint);
   }
-  .hero-timer-note {
+  .hero-proof:hover {
+    color: var(--text-muted);
+  }
+  .hero-proof .star {
+    color: #ffb800;
+    margin-left: 2px;
+    margin-right: 6px;
+  }
+  .hero-proof strong {
+    color: var(--text);
+  }
+
+  .hero-alt {
     margin-top: 1rem;
-    text-align: center;
     font-size: 0.875rem;
     color: var(--text-faint);
   }
-
-  .section-head {
-    max-width: 36ch;
-    margin-bottom: 2.5rem;
+  .hero-alt a {
+    color: var(--text-muted);
+  }
+  .hero-alt a:hover {
+    color: var(--text);
+  }
+  .hero-alt .dot {
+    margin-inline: 0.5rem;
+    opacity: 0.5;
   }
 
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+  /* Shared long-form layout: single, centered column. */
+  .narrow {
+    max-width: 760px;
+  }
+  .feature .lead {
+    margin-top: 1rem;
+  }
+  .feature--alt {
+    background: #161618;
   }
 
-  .screenshot-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
-  .screenshot-placeholder {
-    aspect-ratio: 4 / 3;
-    display: grid;
-    place-items: center;
-    text-align: center;
-    padding: 1rem;
-    border: 2px dashed rgba(0, 0, 0, 0.18);
+  /* Framed screenshot. */
+  .shot {
+    margin: 2rem auto 0;
+    max-width: 880px;
     border-radius: var(--radius-card);
-    color: var(--light-text-muted);
-    font-size: 0.875rem;
-    background: rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    background: #fff;
+  }
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  @media (max-width: 880px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-    }
-    .hero-timer {
-      order: -1;
-    }
-    .feature-grid,
-    .screenshot-grid {
+  /* Reviews / social proof */
+  .reviews-section {
+    background: #161618;
+  }
+  .reviews-head {
+    max-width: 40ch;
+    margin: 0 auto 2.5rem;
+  }
+  .rating-badge {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .rating-badge .star {
+    color: #ffb800;
+    margin-left: 4px;
+  }
+  .reviews-head h2 {
+    margin-top: 0.5rem;
+  }
+  .reviews-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 920px;
+    margin-inline: auto;
+  }
+  .review {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .review-stars {
+    color: #ffb800;
+    letter-spacing: 0.1em;
+    font-size: 0.9375rem;
+  }
+  .review-quote {
+    margin: 0;
+    color: var(--text);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+  .review-author {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-faint);
+  }
+  .reviews-link {
+    margin-top: 2rem;
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 640px) {
+    .reviews-grid {
       grid-template-columns: 1fr;
     }
   }
-  @media (min-width: 560px) and (max-width: 880px) {
-    .feature-grid {
-      grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 560px) {
+    .hero-alt .dot {
+      display: block;
+      height: 0;
+      overflow: hidden;
     }
   }
 </style>

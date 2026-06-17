@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Timer from '../components/Timer.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
+import { site } from '../config/site';
 
 const title = 'Free online timer';
 const description =
-  'A free, full-screen online timer. Type a time in plain language, press Return, and go. No sign-up, no ads. Works in any browser.';
+  'A free, full screen online timer. Type a time in plain language, press Return, and go. No sign-up, no ads. Works in any browser.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -15,13 +16,37 @@ const description =
       <p class="eyebrow">Free web timer</p>
       <h1>Online timer</h1>
       <p class="lead mx-auto">
-        Type a time in plain language: "5 minutes", "25 m", or "5". Press Return
-        to start. Click the pill to pause. Go full screen for a clean countdown.
-        No sign-up, no ads.
+        Type a time in plain language: "5", "25", "1:30", or a clock time like
+        "5pm". Press Return to start. Click the pill to pause. Switch between blue
+        and black, or go full screen for a clean countdown. No sign-up, no ads.
       </p>
 
       <div class="tool-timer">
         <Timer initialMinutes={5} size="full" showFullscreen={true} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Upsell: why the Mac app beats the web version -->
+  <section class="section section--light">
+    <div class="container upsell">
+      <h2>This is the web version. The Mac app does more.</h2>
+      <p>
+        The web timer is a good starter. It runs in your browser, on this page.
+        The Mac app lifts the timer off the page and onto your whole screen.
+      </p>
+      <ul class="upsell-list">
+        <li><strong>Move it anywhere:</strong> drag the timer to any corner of your screen.</li>
+        <li><strong>Pin it on top:</strong> keep it above your other windows while you work.</li>
+        <li><strong>Stay visible over full screen apps:</strong> see it over Keynote, PowerPoint, and Zoom, even in full screen.</li>
+        <li><strong>Make it yours:</strong> transparent, frosted, Liquid Glass, and more, plus repeat timers and count up after zero.</li>
+        <li><strong>Keep it in the menu bar:</strong> the countdown sits right at the top of your screen.</li>
+      </ul>
+      <div class="upsell-actions">
+        <a class="btn btn--primary" href={site.macAppStoreUrl} rel="noopener" target="_blank">
+          Get the free Mac app
+        </a>
+        <span class="upsell-fine">Free. macOS {site.minMacOS}+. Windows soon.</span>
       </div>
     </div>
   </section>
@@ -31,9 +56,11 @@ const description =
       <h2>How to use the web timer</h2>
       <ul>
         <li><strong>Set a time:</strong> type "10 minutes", "10 m", "1:30", or "90s", then press Return.</li>
-        <li><strong>Start or pause:</strong> click the blue pill or use the Start button.</li>
-        <li><strong>Reset:</strong> the Reset button returns to your last set time.</li>
-        <li><strong>Full screen:</strong> use the Full screen button for a distraction-free countdown.</li>
+        <li><strong>Count down to a clock time:</strong> type "5pm" or "2:15am" (add am or pm so it is read as a time, not a duration).</li>
+        <li><strong>Add or remove time:</strong> type "add 5 min", "+5m", or "-1h" to adjust without restarting.</li>
+        <li><strong>Start or pause:</strong> click the pill or use the Start button.</li>
+        <li><strong>Theme:</strong> switch between blue and black with the swatches. Your choice is remembered.</li>
+        <li><strong>Full screen:</strong> use the Full screen button for a distraction-free countdown that keeps your theme.</li>
         <li><strong>Sound:</strong> a gentle tone plays when the timer finishes, after your first click.</li>
       </ul>
 
@@ -69,5 +96,37 @@ const description =
   }
   .tool-info strong {
     color: var(--text);
+  }
+
+  .upsell {
+    max-width: var(--content-width);
+  }
+  .upsell h2 {
+    margin-bottom: 1rem;
+  }
+  .upsell > p {
+    font-size: 1.0625rem;
+    margin-bottom: 1.25rem;
+  }
+  .upsell-list {
+    margin: 0 0 1.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    font-size: 1.0625rem;
+    color: var(--light-text-muted);
+  }
+  .upsell-list strong {
+    color: var(--light-text);
+  }
+  .upsell-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .upsell-fine {
+    font-size: 0.875rem;
+    color: var(--light-text-muted);
   }
 </style>
