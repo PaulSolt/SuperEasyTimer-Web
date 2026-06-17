@@ -4,9 +4,9 @@ description: "Show a full screen countdown everyone in the room can read. Here i
 publishDate: 2026-06-10
 keyword: "full screen timer mac"
 cluster: "Presentation timers"
-heroImage: "/media/screenshots/full-screen.jpg"
+heroImage: "/media/screenshots-clean/full-screen.jpg"
 heroAlt: "A large full screen countdown timer reading 25:00."
-ogImage: "/media/screenshots/full-screen.jpg"
+ogImage: "/media/screenshots-clean/full-screen.jpg"
 draft: false
 ---
 

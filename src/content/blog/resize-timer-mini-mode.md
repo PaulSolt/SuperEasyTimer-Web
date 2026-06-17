@@ -4,9 +4,9 @@ description: "Make the timer big for the room or tiny for the corner of your scr
 publishDate: 2026-05-28
 keyword: "small timer mac"
 cluster: "Focus / productivity"
-heroImage: "/media/screenshots/keep-visible.jpg"
+heroImage: "/media/screenshots-clean/keep-visible.jpg"
 heroAlt: "Super Easy Timer kept small and visible while you work."
-ogImage: "/media/screenshots/keep-visible.jpg"
+ogImage: "/media/screenshots-clean/keep-visible.jpg"
 draft: false
 ---
 

@@ -4,9 +4,9 @@ description: "When the timer hits zero, keep counting so you can see how far ove
 publishDate: 2026-06-02
 keyword: "count up timer"
 cluster: "Meetings"
-heroImage: "/media/screenshots/repeat.jpg"
+heroImage: "/media/screenshots-clean/repeat.jpg"
 heroAlt: "The count up after zero option in Super Easy Timer."
-ogImage: "/media/screenshots/repeat.jpg"
+ogImage: "/media/screenshots-clean/repeat.jpg"
 draft: false
 ---
 

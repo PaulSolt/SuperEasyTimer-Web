@@ -4,9 +4,9 @@ description: "Match the timer to your screen with transparent, frosted, Liquid G
 publishDate: 2026-05-30
 keyword: "transparent timer mac"
 cluster: "Customization"
-heroImage: "/media/screenshots/themes.jpg"
+heroImage: "/media/screenshots-clean/themes.jpg"
 heroAlt: "The Super Easy Timer theme picker with transparent, frosted, and Liquid Glass options."
-ogImage: "/media/screenshots/themes.jpg"
+ogImage: "/media/screenshots-clean/themes.jpg"
 draft: false
 ---
 

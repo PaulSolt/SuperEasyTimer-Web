@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloadCTA from '../components/DownloadCTA.astro';
+import StoreBadge from '../components/StoreBadge.astro';
 import { site } from '../config/site';
 
 // Which screenshot set the homepage uses. Swap to '/media/screenshots' to
@@ -71,14 +72,9 @@ const sections = [
         whole screen.
       </p>
 
-      <a class="store-badge" href={site.macAppStoreUrl} rel="noopener" target="_blank">
-        <img
-          src="/app-store-badge.svg"
-          alt="Download on the Mac App Store"
-          width="156"
-          height="40"
-        />
-      </a>
+      <div class="hero-cta">
+        <StoreBadge height={52} />
+      </div>
 
       <a class="hero-proof" href={site.macAppStoreUrl} rel="noopener" target="_blank">
         <strong>{site.rating}</strong><span class="star" aria-hidden="true">★</span>
@@ -118,6 +114,42 @@ const sections = [
         routines get a simple repeat timer. One timer, every place you need to see
         the time.
       </p>
+    </div>
+  </section>
+
+  <!-- Personal note from the maker -->
+  <section class="section maker-note">
+    <div class="container maker-inner">
+      <img class="maker-photo" src="/media/paul.png" alt="Paul Solt" width="96" height="96" />
+      <h2>Why I made Super Easy Timer</h2>
+      <div class="maker-body">
+        <p>Hi, I'm Paul.</p>
+        <p>
+          Some days I look up and wonder where the time went. That is why I made
+          Super Easy Timer. The other timers I tried were clunky, or they crashed
+          right when I needed them. I wanted one that starts fast, stays on
+          screen, and gets out of the way while I work.
+        </p>
+        <p>
+          I use it every day. To stay focused. To catch a meeting. To leave on
+          time to pick up my daughter. For years I wanted a timer that stays
+          visible over full screen apps. That took a long time to get right. Now
+          it just works.
+        </p>
+        <p>
+          This is my timer, not a corporation's. I built it for myself, and I keep
+          making it better so it works for you too. It is free right now. I hope
+          it helps you find where your time goes.
+        </p>
+      </div>
+      <img
+        class="maker-signature"
+        src="/media/paul-signature.png"
+        alt="Paul Solt"
+        width="180"
+        height="76"
+      />
+      <p class="maker-name">Paul Solt, maker of Super Easy Timer</p>
     </div>
   </section>
 
@@ -210,16 +242,8 @@ const sections = [
     max-width: 48ch;
   }
 
-  .store-badge {
-    display: inline-block;
+  .hero-cta {
     margin-top: 1.5rem;
-  }
-  .store-badge img {
-    height: 52px;
-    width: auto;
-  }
-  .store-badge:hover {
-    opacity: 0.85;
   }
 
   .hero-proof {
@@ -234,7 +258,7 @@ const sections = [
   .hero-proof .star {
     color: #ffb800;
     margin-left: 2px;
-    margin-right: 6px;
+    margin-right: 3px;
   }
   .hero-proof strong {
     color: var(--text);
@@ -281,6 +305,37 @@ const sections = [
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  /* Maker's note */
+  .maker-inner {
+    max-width: 640px;
+    text-align: center;
+  }
+  .maker-photo {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    border: 2px solid var(--border-strong);
+  }
+  .maker-body {
+    margin-top: 1rem;
+    text-align: left;
+  }
+  .maker-body p {
+    margin-bottom: 1rem;
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+  }
+  .maker-signature {
+    width: 160px;
+    height: auto;
+    margin: 1.5rem 0 0.5rem;
+  }
+  .maker-name {
+    font-size: 0.875rem;
+    color: var(--text-faint);
   }
 
   /* Reviews / social proof */

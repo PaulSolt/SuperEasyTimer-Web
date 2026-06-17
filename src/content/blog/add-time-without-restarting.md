@@ -4,9 +4,9 @@ description: "Need a few more minutes? Add or remove time while the timer runs, 
 publishDate: 2026-06-06
 keyword: "add time to timer"
 cluster: "Ease of use"
-heroImage: "/media/screenshots/just-type.jpg"
+heroImage: "/media/screenshots-clean/just-type.jpg"
 heroAlt: "Typing a command to add time to a running timer."
-ogImage: "/media/screenshots/just-type.jpg"
+ogImage: "/media/screenshots-clean/just-type.jpg"
 draft: false
 ---
 

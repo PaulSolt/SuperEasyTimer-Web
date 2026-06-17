@@ -4,9 +4,9 @@ description: "Skip the dials. Type how long you want and press Return. Here is h
 publishDate: 2026-06-08
 keyword: "type to start timer"
 cluster: "Ease of use"
-heroImage: "/media/screenshots/just-type.jpg"
+heroImage: "/media/screenshots-clean/just-type.jpg"
 heroAlt: "Typing a duration to start the timer."
-ogImage: "/media/screenshots/just-type.jpg"
+ogImage: "/media/screenshots-clean/just-type.jpg"
 draft: false
 ---
 

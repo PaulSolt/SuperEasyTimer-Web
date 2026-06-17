@@ -4,9 +4,9 @@ description: "Run the same countdown again and again, with an optional delay bet
 publishDate: 2026-06-04
 keyword: "repeat timer mac"
 cluster: "Focus / productivity"
-heroImage: "/media/screenshots/repeat.jpg"
+heroImage: "/media/screenshots-clean/repeat.jpg"
 heroAlt: "End-of-timer options including restart automatically with a delay."
-ogImage: "/media/screenshots/repeat.jpg"
+ogImage: "/media/screenshots-clean/repeat.jpg"
 draft: false
 ---
 

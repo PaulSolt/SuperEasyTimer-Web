@@ -4,9 +4,9 @@ description: "Float a countdown above your work so you never lose track of time.
 publishDate: 2026-06-14
 keyword: "floating timer mac"
 cluster: "Always-on-top utilities"
-heroImage: "/media/screenshots/keep-visible.jpg"
+heroImage: "/media/screenshots-clean/keep-visible.jpg"
 heroAlt: "A floating timer kept visible on a Mac desktop."
-ogImage: "/media/screenshots/keep-visible.jpg"
+ogImage: "/media/screenshots-clean/keep-visible.jpg"
 draft: false
 ---
 

@@ -4,9 +4,9 @@ description: "Keep a timer in the macOS menu bar so the countdown sits at the to
 publishDate: 2026-06-12
 keyword: "menu bar timer mac"
 cluster: "Always-on-top utilities"
-heroImage: "/media/screenshots/keep-visible.jpg"
+heroImage: "/media/screenshots-clean/keep-visible.jpg"
 heroAlt: "Super Easy Timer running in the macOS menu bar."
-ogImage: "/media/screenshots/keep-visible.jpg"
+ogImage: "/media/screenshots-clean/keep-visible.jpg"
 draft: false
 ---
 

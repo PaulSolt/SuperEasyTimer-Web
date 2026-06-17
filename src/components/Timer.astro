@@ -2,19 +2,22 @@
 /**
  * The interactive web timer island.
  * Static markup (pill, input, controls) ships in the HTML for SEO; the
- * timer logic in the <script> hydrates in the browser. Reused on `/` and
- * `/timer`. Multiple instances per page are supported.
+ * timer logic in the <script> hydrates in the browser. Reused on `/timer`
+ * and `/presentation-timer`. Multiple instances per page are supported.
  */
 interface Props {
   /** Starting minutes shown before the user types anything. */
   initialMinutes?: number;
   /** Show the fullscreen toggle (uses the browser Fullscreen API). */
   showFullscreen?: boolean;
-  /** Visual size. 'hero' is the landing demo, 'full' is the standalone tool. */
+  /** Visual size. 'hero' is the demo, 'full' is the standalone tool. */
   size?: 'hero' | 'full';
+  /** Horizontal alignment of the pill, input, and controls. */
+  align?: 'center' | 'start';
 }
 
-const { initialMinutes = 5, showFullscreen = true, size = 'hero' } = Astro.props;
+const { initialMinutes = 5, showFullscreen = true, size = 'hero', align = 'center' } =
+  Astro.props;
 
 const initialSeconds = Math.round(initialMinutes * 60);
 const mm = String(Math.floor(initialSeconds / 60)).padStart(2, '0');
@@ -22,19 +25,14 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 ---
 
 <div
-  class:list={['set-timer', `set-timer--${size}`]}
+  class:list={['set-timer', `set-timer--${size}`, `set-timer--align-${align}`]}
   data-set-timer
   data-theme="blue"
   data-initial-seconds={initialSeconds}
 >
-  <button
-    type="button"
-    class="timer-pill"
-    data-pill
-    aria-label="Start or pause the timer"
-  >
+  <div class="timer-pill" data-pill>
     <span class="timer-digits" data-digits aria-live="polite">{mm}:{ss}</span>
-  </button>
+  </div>
 
   <form class="timer-input-row" data-form>
     <input
@@ -44,21 +42,29 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
       inputmode="text"
       autocomplete="off"
       spellcheck="false"
-      placeholder="Type 5 min, 25, 1:30, or 5pm, then press Return"
+      placeholder="Type a time, like 5 min"
       aria-label="Set timer time"
     />
     <button type="submit" class="sr-only">Set timer</button>
   </form>
 
   <div class="timer-controls" role="group" aria-label="Timer controls">
-    <button type="button" class="ctrl" data-toggle aria-label="Start or pause">
+    <button type="button" class="ctrl" data-toggle aria-label="Play or pause">
+      <svg class="ic ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+      <svg class="ic ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
       <span data-toggle-label>Start</span>
     </button>
-    <button type="button" class="ctrl" data-reset aria-label="Reset timer">Reset</button>
+    <button type="button" class="ctrl" data-reset aria-label="Reset timer">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 7l5 5V8a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" /></svg>
+      <span>Reset</span>
+    </button>
     {
       showFullscreen && (
         <button type="button" class="ctrl" data-fullscreen aria-label="Toggle full screen">
-          Full screen
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 9V4h5v2H6v3H4zm11-5h5v5h-2V6h-3V4zM4 15h2v3h3v2H4v-5zm14 0h2v5h-5v-2h3v-3z" />
+          </svg>
+          <span data-fs-label>Full screen</span>
         </button>
       )
     }
@@ -66,26 +72,14 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 
   <div class="timer-themes" role="group" aria-label="Timer theme">
     <span class="timer-themes-label">Theme</span>
-    <button
-      type="button"
-      class="swatch swatch--blue"
-      data-theme-btn="blue"
-      aria-label="Blue theme"
-      aria-pressed="true"></button>
-    <button
-      type="button"
-      class="swatch swatch--black"
-      data-theme-btn="black"
-      aria-label="Black theme"
-      aria-pressed="false"></button>
+    <button type="button" class="swatch swatch--blue" data-theme-btn="blue" aria-label="Blue theme" aria-pressed="true"></button>
+    <button type="button" class="swatch swatch--black" data-theme-btn="black" aria-label="Black theme" aria-pressed="false"></button>
   </div>
 </div>
 
 <style>
   .set-timer {
-    /* Theme tokens, overridden per data-theme below. */
     --pill-bg: var(--blue);
-    --pill-bg-hover: var(--blue-hover);
     --pill-glow: var(--glow-blue);
     --digit-color: var(--digits);
 
@@ -95,41 +89,28 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     gap: 1.25rem;
     width: 100%;
   }
+  .set-timer--align-start {
+    align-items: flex-start;
+  }
   .set-timer[data-theme='black'] {
     --pill-bg: #000;
-    --pill-bg-hover: #161616;
     --pill-glow: 0 8px 40px rgba(0, 0, 0, 0.55);
     --digit-color: #ffffff;
   }
 
-  /* The signature element: colored pill, tabular digits. */
+  /* The pill is a display element: not clickable. */
   .timer-pill {
-    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: min(100%, 460px);
     padding: clamp(1.5rem, 5vw, 2.75rem) 2rem;
-    border: none;
-    cursor: pointer;
     background: var(--pill-bg);
     border-radius: var(--radius-pill);
     box-shadow: var(--pill-glow);
-    transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease;
+    transition: background 0.2s ease;
     color: var(--digit-color);
   }
-  .timer-pill:hover {
-    background: var(--pill-bg-hover);
-  }
-  .timer-pill:active {
-    transform: scale(0.99);
-  }
-  .timer-pill:focus-visible {
-    outline: 3px solid var(--digit-color);
-    outline-offset: 3px;
-  }
-
   .set-timer--full .timer-pill {
     width: min(100%, 560px);
   }
@@ -157,7 +138,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
       background: var(--pill-bg);
     }
     50% {
-      background: #ff453a; /* macOS system red */
+      background: #ff453a;
     }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -179,7 +160,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     background: var(--bg-elevated);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-sm);
-    text-align: center;
+    text-align: left;
   }
   .timer-input::placeholder {
     color: var(--text-faint);
@@ -196,8 +177,15 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     flex-wrap: wrap;
     justify-content: center;
   }
+  .set-timer--align-start .timer-controls,
+  .set-timer--align-start .timer-themes {
+    justify-content: flex-start;
+  }
   .ctrl {
-    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 500;
@@ -211,6 +199,22 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
   .ctrl:hover {
     color: var(--text);
     background: var(--bg-elevated-2);
+  }
+  .ic {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex: none;
+  }
+  /* Play/pause icon swap. */
+  .ic-pause {
+    display: none;
+  }
+  .set-timer.is-running .ic-play {
+    display: none;
+  }
+  .set-timer.is-running .ic-pause {
+    display: inline-block;
   }
 
   /* Theme swatches. */
@@ -243,9 +247,9 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     border-color: transparent;
   }
 
-  /* ---- Fullscreen view -------------------------------------------------
+  /* ---- Fullscreen view -----------------------------------------------
      Edge-to-edge countdown on the current theme color. Digits auto-fit by
-     JS (see fit()). The theme is kept, so blue stays blue and black black. */
+     JS. Controls float over the screen and reveal on mouse movement. */
   .set-timer.is-fullscreen {
     justify-content: center;
     gap: 0;
@@ -254,12 +258,10 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     height: 100vh;
     background: var(--pill-bg);
   }
-  /* Hide the input and theme swatches while presenting. */
   .set-timer.is-fullscreen .timer-input-row,
   .set-timer.is-fullscreen .timer-themes {
     display: none;
   }
-  /* Controls float over the countdown and reveal on mouse move. */
   .set-timer.is-fullscreen .timer-controls {
     position: fixed;
     bottom: clamp(1.5rem, 5vh, 3rem);
@@ -273,7 +275,6 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     -webkit-backdrop-filter: blur(12px);
     transition: opacity 0.25s ease;
   }
-  /* Idle: hide the cursor and the controls until the mouse moves. */
   .set-timer.is-fullscreen.is-idle {
     cursor: none;
   }
@@ -287,12 +288,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     border-radius: 0;
     background: transparent;
     box-shadow: none;
-    cursor: default;
   }
-  .set-timer.is-fullscreen .timer-digits {
-    line-height: 1;
-  }
-  /* In fullscreen, flash the whole canvas. */
   .set-timer.is-fullscreen.is-finished .timer-pill {
     animation: timer-flash-full 0.6s ease-in-out 6;
   }
@@ -318,12 +314,11 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 
   const THEME_KEY = 'set-timer-theme';
 
-  // Duration parser: "1h 30m", "90s", "5 minutes", "5 m", "1:30", "5". Seconds.
   function parseDuration(raw: string): number | null {
     const input = raw.trim().toLowerCase();
     if (!input) return null;
 
-    // Clock-style duration: mm:ss or hh:mm:ss (NOT a time of day).
+    // mm:ss or hh:mm:ss duration (NOT a time of day).
     if (input.includes(':')) {
       const parts = input.split(':').map((p) => parseInt(p, 10));
       if (parts.some((n) => Number.isNaN(n))) return null;
@@ -332,7 +327,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
       return secs > 0 ? secs : null;
     }
 
-    // Combined units. A bare number means minutes (matches the app).
+    // A bare number means minutes (matches the app).
     let total = 0;
     let matched = false;
     const re = /(\d+(?:\.\d+)?)\s*(h(?:ours?|rs?)?|m(?:in(?:ute)?s?)?|s(?:ec(?:ond)?s?)?)?/g;
@@ -351,8 +346,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     return secs > 0 ? secs : null;
   }
 
-  // Clock time, only with an explicit am/pm. "5pm", "2:15am". Returns seconds
-  // from now until that time of day. Avoids ambiguity with mm:ss durations.
+  // Clock time, only with an explicit am/pm (avoids mm:ss ambiguity).
   function parseClock(raw: string): number | null {
     const m = raw.trim().toLowerCase().match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)$/);
     if (!m) return null;
@@ -369,7 +363,6 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     return Math.round((target.getTime() - now.getTime()) / 1000);
   }
 
-  // Top-level parse: add/remove time, clock time, or a plain duration.
   function parseInput(raw: string): ParseResult | null {
     const s = raw.trim().toLowerCase();
     if (!s) return null;
@@ -405,9 +398,10 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     root: HTMLElement;
     digitsEl: HTMLElement;
     toggleLabel: HTMLElement;
-    pill: HTMLButtonElement;
     input: HTMLInputElement;
     form: HTMLFormElement;
+    fsButton: HTMLElement | null = null;
+    fsLabel: HTMLElement | null = null;
 
     initialSeconds: number;
     remaining: number;
@@ -416,14 +410,12 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     rafId = 0;
     lastLen = 0;
     idleTimer = 0;
-    fsButton: HTMLElement | null = null;
     audioCtx: AudioContext | null = null;
 
     constructor(root: HTMLElement) {
       this.root = root;
       this.digitsEl = root.querySelector('[data-digits]')!;
       this.toggleLabel = root.querySelector('[data-toggle-label]')!;
-      this.pill = root.querySelector('[data-pill]')!;
       this.input = root.querySelector('[data-input]')!;
       this.form = root.querySelector('[data-form]')!;
 
@@ -436,7 +428,6 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     }
 
     bind() {
-      this.pill.addEventListener('click', () => this.toggle());
       this.form.addEventListener('submit', (e) => {
         e.preventDefault();
         this.applyInput();
@@ -444,24 +435,22 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 
       this.root.querySelector('[data-toggle]')?.addEventListener('click', () => this.toggle());
       this.root.querySelector('[data-reset]')?.addEventListener('click', () => this.reset());
+
       this.fsButton = this.root.querySelector('[data-fullscreen]');
+      this.fsLabel = this.root.querySelector('[data-fs-label]');
       this.fsButton?.addEventListener('click', () => this.toggleFullscreen());
 
       this.root.querySelectorAll<HTMLElement>('[data-theme-btn]').forEach((btn) => {
         btn.addEventListener('click', () => this.setTheme(btn.dataset.themeBtn || 'blue'));
       });
 
-      // Keep the class in sync whether fullscreen is toggled by button or Esc.
       document.addEventListener('fullscreenchange', () => this.onFullscreenChange());
       window.addEventListener('resize', () => this.fit());
-      // Reveal controls / cursor on any activity while fullscreen.
       document.addEventListener('mousemove', this.handleActivity);
       document.addEventListener('keydown', this.handleActivity);
       document.addEventListener('touchstart', this.handleActivity);
     }
 
-    // While fullscreen, show the controls and cursor, then hide them after a
-    // short idle delay. Runs only when this timer is the fullscreen element.
     handleActivity = () => {
       if (!this.isFullscreen()) return;
       this.root.classList.remove('is-idle');
@@ -501,14 +490,14 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     }
 
     toggle() {
-      // First interaction unlocks audio.
-      this.ensureAudio();
+      this.ensureAudio(); // first interaction unlocks audio
       this.running ? this.pause() : this.start();
     }
 
     start() {
       if (this.remaining <= 0) this.remaining = this.initialSeconds;
       this.root.classList.remove('is-finished');
+      this.root.classList.add('is-running');
       this.running = true;
       this.endsAt = performance.now() + this.remaining * 1000;
       this.toggleLabel.textContent = 'Pause';
@@ -517,12 +506,14 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 
     pause() {
       this.running = false;
+      this.root.classList.remove('is-running');
       cancelAnimationFrame(this.rafId);
       this.toggleLabel.textContent = 'Start';
     }
 
     reset() {
       this.running = false;
+      this.root.classList.remove('is-running');
       cancelAnimationFrame(this.rafId);
       this.remaining = this.initialSeconds;
       this.root.classList.remove('is-finished');
@@ -545,6 +536,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 
     finish() {
       this.running = false;
+      this.root.classList.remove('is-running');
       this.root.classList.add('is-finished');
       this.toggleLabel.textContent = 'Start';
       this.beep();
@@ -553,11 +545,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     render() {
       const text = formatTime(this.remaining);
       this.digitsEl.textContent = text;
-      // Refit only when the digit count changes (e.g. crossing an hour),
-      // since tabular-nums keeps equal-length strings the same width.
-      if (this.isFullscreen() && text.length !== this.lastLen) {
-        this.fit();
-      }
+      if (this.isFullscreen() && text.length !== this.lastLen) this.fit();
     }
 
     // ---- Theme ----------------------------------------------------------
@@ -587,7 +575,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
       if (this.isFullscreen()) this.fit();
     }
 
-    // ---- Fullscreen sizing ---------------------------------------------
+    // ---- Fullscreen -----------------------------------------------------
     isFullscreen() {
       return document.fullscreenElement === this.root;
     }
@@ -595,10 +583,10 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     onFullscreenChange() {
       const active = this.isFullscreen();
       this.root.classList.toggle('is-fullscreen', active);
-      if (this.fsButton) this.fsButton.textContent = active ? 'Exit full screen' : 'Full screen';
+      if (this.fsLabel) this.fsLabel.textContent = active ? 'Exit full screen' : 'Full screen';
       if (active) {
         this.fit();
-        this.handleActivity(); // show controls, then start the idle countdown
+        this.handleActivity();
       } else {
         this.digitsEl.style.fontSize = '';
         this.lastLen = 0;
@@ -607,7 +595,6 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
       }
     }
 
-    // Scale the digits to fill the screen (width and height) when fullscreen.
     fit() {
       if (!this.isFullscreen()) return;
       const availW = this.root.clientWidth * 0.9;
@@ -621,7 +608,15 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
       this.lastLen = (this.digitsEl.textContent || '').length;
     }
 
-    // ---- Audio (created on a user gesture to respect autoplay rules) ----
+    toggleFullscreen() {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        this.root.requestFullscreen?.();
+      }
+    }
+
+    // ---- Audio ----------------------------------------------------------
     ensureAudio() {
       if (this.audioCtx) return;
       try {
@@ -652,24 +647,14 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
         osc.stop(t + 0.32);
       }
     }
-
-    toggleFullscreen() {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        this.root.requestFullscreen?.();
-      }
-    }
   }
 
-  // Hydrate every timer instance on the page.
   document.querySelectorAll<HTMLElement>('[data-set-timer]').forEach((el) => {
     new SetTimer(el);
   });
 </script>
 
 <style is:global>
-  /* Shake animation for invalid input (global so the class can be toggled). */
   .timer-input.shake {
     animation: timer-shake 0.4s ease;
     border-color: #ff453a;

@@ -1,0 +1,46 @@
+---
+// Official Apple "Download on the Mac App Store" badge as a clickable button.
+import { site } from '../config/site';
+interface Props {
+  /** Badge height in px. */
+  height?: number;
+}
+const { height = 50 } = Astro.props;
+---
+
+<a
+  class="store-badge"
+  href={site.macAppStoreUrl}
+  rel="noopener"
+  target="_blank"
+  aria-label="Download on the Mac App Store"
+  style={`--badge-h:${height}px`}
+>
+  <img src="/app-store-badge.svg" alt="Download on the Mac App Store" width="156" height="40" draggable="false" />
+</a>
+
+<style>
+  .store-badge {
+    display: inline-block;
+    line-height: 0;
+    border-radius: 8px;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+  }
+  .store-badge img {
+    height: var(--badge-h, 50px);
+    width: auto;
+    /* Clicks go to the anchor; the image is not draggable or selectable. */
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .store-badge:hover {
+    opacity: 0.85;
+  }
+  .store-badge:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+  }
+</style>

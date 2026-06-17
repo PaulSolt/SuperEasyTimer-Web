@@ -4,9 +4,9 @@ description: "Pin a countdown above every window on your Mac, and keep it visibl
 publishDate: 2026-06-16
 keyword: "always on top timer mac"
 cluster: "Always-on-top utilities"
-heroImage: "/media/screenshots/always-on-top.jpg"
+heroImage: "/media/screenshots-clean/always-on-top.jpg"
 heroAlt: "A timer pinned on top of a full screen app on Mac."
-ogImage: "/media/screenshots/always-on-top.jpg"
+ogImage: "/media/screenshots-clean/always-on-top.jpg"
 draft: false
 ---
 

@@ -4,9 +4,9 @@ description: "Keep a countdown visible over Keynote and PowerPoint, even in full
 publishDate: 2026-06-15
 keyword: "presentation timer for keynote"
 cluster: "Presentation timers"
-heroImage: "/media/screenshots/always-on-top.jpg"
+heroImage: "/media/screenshots-clean/always-on-top.jpg"
 heroAlt: "Super Easy Timer pinned on top of a full screen presentation."
-ogImage: "/media/screenshots/always-on-top.jpg"
+ogImage: "/media/screenshots-clean/always-on-top.jpg"
 draft: false
 ---
 
