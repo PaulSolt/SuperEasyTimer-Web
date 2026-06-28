@@ -8,12 +8,15 @@ interface Props {
   body?: string;
   /** Use the compact variant (for blog post endings). */
   compact?: boolean;
+  /** Analytics location label (which page this CTA appears on). */
+  location?: string;
 }
 
 const {
   heading = 'Want it on top, even over full screen presentations?',
   body = 'This is the web version. Get the free Mac app to keep your timer visible over full screen apps and presentations. Windows soon.',
   compact = false,
+  location = 'download_cta',
 } = Astro.props;
 ---
 
@@ -27,12 +30,23 @@ const {
         href={site.macAppStoreUrl}
         rel="noopener"
         target="_blank"
+        data-ga="download_intent"
+        data-ga-platform="mac_app_store"
+        data-ga-location={location}
       >
         Get the free Mac app
       </a>
       {
         site.windowsDownloadUrl ? (
-          <a class="btn btn--secondary" href={site.windowsDownloadUrl} rel="noopener" target="_blank">
+          <a
+            class="btn btn--secondary"
+            href={site.windowsDownloadUrl}
+            rel="noopener"
+            target="_blank"
+            data-ga="download_intent"
+            data-ga-platform="windows"
+            data-ga-location={location}
+          >
             Download for Windows
           </a>
         ) : (

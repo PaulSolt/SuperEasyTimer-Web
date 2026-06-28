@@ -27,8 +27,16 @@ const description =
         <span class="dl-platform">macOS</span>
         <h2>Mac</h2>
         <p>Available now on the Mac App Store. Free.</p>
-        <StoreBadge height={52} />
-        <a class="beta-link" href={site.testFlightUrl} rel="noopener" target="_blank">
+        <StoreBadge height={52} location="download_page" />
+        <a
+          class="beta-link"
+          href={site.testFlightUrl}
+          rel="noopener"
+          target="_blank"
+          data-ga="download_intent"
+          data-ga-platform="testflight"
+          data-ga-location="download_page"
+        >
           Or download the beta on TestFlight →
         </a>
         <p class="dl-fine">

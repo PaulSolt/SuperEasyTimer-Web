@@ -73,10 +73,18 @@ const sections = [
       </p>
 
       <div class="hero-cta">
-        <StoreBadge height={52} />
+        <StoreBadge height={52} location="hero" />
       </div>
 
-      <a class="hero-proof" href={site.macAppStoreUrl} rel="noopener" target="_blank">
+      <a
+        class="hero-proof"
+        href={site.macAppStoreUrl}
+        rel="noopener"
+        target="_blank"
+        data-ga="download_intent"
+        data-ga-platform="mac_app_store"
+        data-ga-location="hero_rating"
+      >
         <strong>{site.rating}</strong><span class="star" aria-hidden="true">★</span>
         on the Mac App Store
       </a>
@@ -173,7 +181,14 @@ const sections = [
         }
       </ul>
       <p class="reviews-link text-center">
-        <a href={site.macAppStoreUrl} rel="noopener" target="_blank">Read more reviews on the Mac App Store →</a>
+        <a
+          href={site.macAppStoreUrl}
+          rel="noopener"
+          target="_blank"
+          data-ga="download_intent"
+          data-ga-platform="mac_app_store"
+          data-ga-location="reviews"
+        >Read more reviews on the Mac App Store →</a>
       </p>
     </div>
   </section>
@@ -181,7 +196,7 @@ const sections = [
   <!-- Download CTA -->
   <section class="section">
     <div class="container">
-      <DownloadCTA />
+      <DownloadCTA location="home_bottom" />
     </div>
   </section>
 </BaseLayout>

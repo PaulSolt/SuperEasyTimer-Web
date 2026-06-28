@@ -4,8 +4,10 @@ import { site } from '../config/site';
 interface Props {
   /** Badge height in px. */
   height?: number;
+  /** Analytics location label (where on the site this badge appears). */
+  location?: string;
 }
-const { height = 50 } = Astro.props;
+const { height = 50, location = 'unknown' } = Astro.props;
 ---
 
 <a
@@ -15,6 +17,9 @@ const { height = 50 } = Astro.props;
   target="_blank"
   aria-label="Download on the Mac App Store"
   style={`--badge-h:${height}px`}
+  data-ga="download_intent"
+  data-ga-platform="mac_app_store"
+  data-ga-location={location}
 >
   <img src="/app-store-badge.svg" alt="Download on the Mac App Store" width="156" height="40" draggable="false" />
 </a>

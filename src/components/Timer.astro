@@ -321,6 +321,17 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 
   const THEME_KEY = 'set-timer-theme';
 
+  // Fire a GA4 event via the site-wide helper (defined in BaseHead), with a
+  // direct gtag fallback. No-ops if analytics hasn't loaded.
+  function track(name: string, params?: Record<string, unknown>) {
+    const w = window as unknown as {
+      track?: (n: string, p?: Record<string, unknown>) => void;
+      gtag?: (...args: unknown[]) => void;
+    };
+    if (typeof w.track === 'function') w.track(name, params);
+    else if (typeof w.gtag === 'function') w.gtag('event', name, params || {});
+  }
+
   function parseDuration(raw: string): number | null {
     const input = raw.trim().toLowerCase();
     if (!input) return null;
@@ -470,6 +481,9 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     applyInput() {
       const result = parseInput(this.input.value);
       if (!result) {
+        // What people type that fails to parse: tells us which time formats to
+        // support next. Truncated to keep within GA param limits.
+        track('timer_input_invalid', { value: this.input.value.trim().slice(0, 100) });
         this.input.classList.add('shake');
         setTimeout(() => this.input.classList.remove('shake'), 400);
         return;
@@ -478,11 +492,17 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
       // Keep focus so users can quickly try another time.
       this.input.focus();
       if (result.op === 'add') {
+        track('timer_adjust', { delta_seconds: result.seconds });
         this.addSeconds(result.seconds);
         return;
       }
       this.initialSeconds = result.seconds;
       this.remaining = result.seconds;
+      track('timer_start', {
+        source: 'input',
+        duration_seconds: result.seconds,
+        duration_min: Math.round(result.seconds / 60),
+      });
       this.start();
     }
 
@@ -499,7 +519,17 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 
     toggle() {
       this.ensureAudio(); // first interaction unlocks audio
-      this.running ? this.pause() : this.start();
+      if (this.running) {
+        track('timer_pause', { remaining_seconds: Math.round(this.remaining) });
+        this.pause();
+      } else {
+        track('timer_start', {
+          source: 'button',
+          duration_seconds: Math.round(this.remaining),
+          duration_min: Math.round(this.remaining / 60),
+        });
+        this.start();
+      }
     }
 
     start() {
@@ -520,6 +550,7 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     }
 
     reset() {
+      track('timer_reset');
       this.running = false;
       this.root.classList.remove('is-running');
       cancelAnimationFrame(this.rafId);
@@ -543,6 +574,8 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     };
 
     finish() {
+      // Ran a full countdown to zero: the strongest web-timer engagement signal.
+      track('timer_complete', { duration_seconds: Math.round(this.initialSeconds) });
       this.running = false;
       this.root.classList.remove('is-running');
       this.root.classList.add('is-finished');
@@ -569,6 +602,8 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
     }
 
     setTheme(theme: string, persist = true) {
+      // persist=true means a user click (initTheme passes false on load).
+      if (persist) track('timer_theme', { theme });
       this.root.dataset.theme = theme;
       this.root.querySelectorAll<HTMLElement>('[data-theme-btn]').forEach((btn) => {
         btn.setAttribute('aria-pressed', String(btn.dataset.themeBtn === theme));
@@ -590,6 +625,8 @@ const ss = String(initialSeconds % 60).padStart(2, '0');
 
     onFullscreenChange() {
       const active = this.isFullscreen();
+      // Presentation/full-screen use is the app's core value prop on the web.
+      track('timer_fullscreen', { state: active ? 'enter' : 'exit' });
       this.root.classList.toggle('is-fullscreen', active);
       if (this.fsLabel) this.fsLabel.textContent = active ? 'Exit full screen' : 'Full screen';
       if (active) {

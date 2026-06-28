@@ -34,6 +34,32 @@ const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
   gtag('js', new Date());
 
   gtag('config', 'G-TVZD8NES51');
+
+  // Small helper so components can fire GA4 events without repeating the guard.
+  window.track = function (name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  };
+
+  // Delegated click tracking: any element with data-ga="event_name" fires that
+  // event. Extra data-ga-* attributes become event params (data-ga-platform ->
+  // { platform: ... }). Keeps markup declarative and components script-free.
+  document.addEventListener(
+    'click',
+    function (e) {
+      var el = e.target.closest ? e.target.closest('[data-ga]') : null;
+      if (!el) return;
+      var params = {};
+      var ds = el.dataset;
+      for (var key in ds) {
+        if (key.length > 2 && key.indexOf('ga') === 0) {
+          var name = key.charAt(2).toLowerCase() + key.slice(3);
+          params[name] = ds[key];
+        }
+      }
+      window.track(el.dataset.ga, params);
+    },
+    true,
+  );
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />

@@ -60,8 +60,51 @@ export const site = {
     },
   ],
 
-  // Contact / support.
-  contactEmail: 'paul@supereasyapps.com',
+  // Contact / support. Goes to Paul's support inbox.
+  contactEmail: 'Paul@SuperEasyApps.com',
 };
 
 export type SiteConfig = typeof site;
+
+// ---- Support mailto links --------------------------------------------------
+// Prefilled subject + body so emails arrive with the details needed to help.
+// The web can't read the installed app's version, so the template asks for it.
+
+function mailto(subject: string, body: string): string {
+  const query = `subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${site.contactEmail}?${query}`;
+}
+
+const supportBody = `Hi Paul,
+
+How can I help? Describe the issue or question below:
+
+
+
+— Details that help me help you (fill in what you can) —
+App version:
+macOS version:
+Mac model:
+`;
+
+const featureRequestBody = `Hi Paul,
+
+I'd love to see:
+
+
+
+Why it would help me:
+
+
+
+Thanks!
+`;
+
+/** mailto link for support requests, with a prefilled details template. */
+export const supportMailto = mailto('Super Easy Timer — Support', supportBody);
+
+/** mailto link for feature requests. */
+export const featureRequestMailto = mailto(
+  'Super Easy Timer — Feature request',
+  featureRequestBody,
+);

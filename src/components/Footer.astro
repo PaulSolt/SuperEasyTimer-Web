@@ -1,5 +1,5 @@
 ---
-import { site } from '../config/site';
+import { site, supportMailto, featureRequestMailto } from '../config/site';
 const year = new Date().getFullYear();
 ---
 
@@ -20,8 +20,28 @@ const year = new Date().getFullYear();
       <div class="footer-col">
         <h4>Learn</h4>
         <a href="/blog">Blog</a>
-        <a href={site.macAppStoreUrl} rel="noopener" target="_blank">Mac App Store</a>
-        <a href={`mailto:${site.contactEmail}`}>Contact</a>
+        <a
+          href={site.macAppStoreUrl}
+          rel="noopener"
+          target="_blank"
+          data-ga="download_intent"
+          data-ga-platform="mac_app_store"
+          data-ga-location="footer"
+        >Mac App Store</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href={supportMailto} data-ga="contact_click" data-ga-type="support" data-ga-location="footer">
+          Email support
+        </a>
+        <a
+          href={featureRequestMailto}
+          data-ga="contact_click"
+          data-ga-type="feature_request"
+          data-ga-location="footer"
+        >
+          Request a feature
+        </a>
       </div>
     </nav>
   </div>
@@ -40,7 +60,7 @@ const year = new Date().getFullYear();
   }
   .footer-inner {
     display: grid;
-    grid-template-columns: 1.8fr 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
     gap: 2.5rem;
   }
   .brand-name {

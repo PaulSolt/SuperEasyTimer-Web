@@ -51,7 +51,15 @@ const description =
         <li><strong>Keep it in the menu bar:</strong> the countdown sits right at the top of your screen.</li>
       </ul>
       <div class="upsell-actions">
-        <a class="btn btn--primary" href={site.macAppStoreUrl} rel="noopener" target="_blank">
+        <a
+          class="btn btn--primary"
+          href={site.macAppStoreUrl}
+          rel="noopener"
+          target="_blank"
+          data-ga="download_intent"
+          data-ga-platform="mac_app_store"
+          data-ga-location="timer_upsell"
+        >
           Get the free Mac app
         </a>
         <span class="upsell-fine">Free. macOS {site.minMacOS}+. Windows soon.</span>
@@ -72,7 +80,7 @@ const description =
         <li><strong>Sound:</strong> a gentle tone plays when the timer finishes, after your first click.</li>
       </ul>
 
-      <DownloadCTA />
+      <DownloadCTA location="timer_bottom" />
     </div>
   </section>
 </BaseLayout>
