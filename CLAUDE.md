@@ -2,7 +2,7 @@
 
 This file defines the writing voice for everything in this repo: blog posts, landing pages, homepage copy, meta descriptions, and App Store adjacent copy. It is derived from the shipped blog posts in `src/content/blog/`, the homepage, and the 2.0.2 App Store description. It overrides any personal or global voice guide. Do not use Paul's X/YouTube/email voice here.
 
-Project structure, design system, and content roadmap live in `README.md`.
+Project structure, design system, and content roadmap live in `README.md`. Rules for blog hero/OG images, including AI-generated scenes, live in `docs/image-style-guide.md`: the timer is always a real screenshot, only the environment may be generated.
 
 ## The voice in one line
 
