@@ -31,6 +31,16 @@ The site is dark-first with one signature accent. Both styles sit inside that sy
 - **Camera:** photographic, shallow depth of field, consistent lens feel across the whole set. The blog index shows these side by side; they must read as one photographer's work.
 - **Texture:** matte and physical. No glossy 3D-render sheen, no fantasy gradients, no illustration/cartoon styles.
 
+## Spatial accuracy (check before the slop pass)
+
+The camera must stand somewhere a real photographer could stand, and every screen must face whoever uses it. This is the first check because it killed the first presentation batch: a confidence monitor faces the speaker, so a shot from the audience that shows both the speaker's face and the monitor's screen is impossible. Reject any composition where:
+
+- A screen's image is visible from a position that would show its back.
+- The subject ignores a screen they would be using, or stares at one they could not see.
+- The blank screen is too oblique, too small, or too blown out to carry a UI composite.
+
+For the presentation cluster the accurate angle is from onstage: over the presenter's shoulder or from the wings, monitor at the stage edge facing back toward them.
+
 ## Rejection checklist (the slop pass)
 
 Zoom in and check every candidate. Reject if any of these appear:
@@ -41,7 +51,11 @@ Zoom in and check every candidate. Reject if any of these appear:
 - **Fake Apple hardware tells:** mangled logos, wrong keyboards. Keep hardware angled or distant so details do not read.
 - **Uncanny audiences:** crowds are hard. Keep audiences dark, out of focus, or silhouetted.
 - **Style drift:** illustration, isometric 3D, watercolor, oversaturated "AI look."
+- **Objects fused with people:** equipment, furniture, or props merged into a subject's silhouette (a batch-two candidate had a camera rig growing out of the presenter's shoulder). If it touches the silhouette, zoom in.
+- **Edge slivers:** partial screens or signage at frame edges often carry faint model-drawn text. Croppable or patchable in the composite pass; reject only if it cannot be removed cleanly.
 - Impossible furniture, melted objects, physics that does not hold.
+
+A blown-out white screen where the composite goes is not a rejection on its own — the whole screen surface gets replaced. Dark-with-faint-glow is still the target because it keeps the scene's exposure honest.
 
 ## Structure: one image per cluster
 
