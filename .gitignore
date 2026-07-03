@@ -28,3 +28,7 @@ pnpm-debug.log*
 
 # app-store-reviews CLI exports (research data, not site content)
 output/
+
+# image generation working files (raw generations, timer captures, composites);
+# repo is public — only final JPGs in public/media/blog/ are committed
+image-gen/

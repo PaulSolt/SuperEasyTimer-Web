@@ -1,90 +1,119 @@
 # Blog image generation style guide
 
-Rules for creating hero and OG images for supereasytimer.com, including AI-generated imagery (Higgsfield or any other tool). The goal is images that sell the use case with structured design, not generic AI illustration. When in doubt, a clean real screenshot beats a mediocre generated scene.
+Rules and structure for hero/OG images on supereasytimer.com, including AI-generated imagery (Higgsfield or any other tool). The goal is images that sell the use-case angle with structured design, not generic AI slop. When in doubt, a clean real screenshot beats a mediocre generated scene.
 
 ## The one rule that matters
 
-**The timer is always real. Only the scene may be generated.**
+**The timer UI is always real. The model never draws it.**
 
-Never let a model draw the app window, the pill, or the digits. AI mangles UI and numbers, and a fake timer on a page about a real timer reads as slop instantly. Every image is one of:
+AI mangles digits and interfaces, and a fake timer on a page about a real timer reads as slop instantly. Screens inside generated scenes are generated blank (dark, powered-on glow) and the real app screenshot is perspective-mapped onto them in post. This is standard screen replacement, the same technique film uses.
 
-1. A real app screenshot (current approach, always acceptable).
-2. A generated environment with a real screenshot composited on top.
-3. A generated environment shot with deliberate negative space where the real timer pill is overlaid in post.
+## Two image styles
 
-## What each image is for
+### Style A: story scenes (people using the app)
 
-One image = one use-case angle. The image answers "where does this timer live?" for that post: a classroom display, a kitchen counter, a conference stage, a squat rack, a desk at 4:55pm. It is context for the product, not decoration.
+Photoreal scenes of a person using the timer in context. These tell the story: a presenter glancing at a confidence monitor while facing the audience, a teacher at the front of a class with the countdown on the TV, an athlete between rounds watching the wall display.
 
-Before generating, write one sentence: "This image shows the timer [doing what] [where] [for whom]." If the sentence is vague, the image will be too.
+- **People are allowed, faces visible, photoreal.** Faces are also where AI images fall apart, so every image passes the rejection checklist below before it ships.
+- The person is *using* the timer, not posing with it. Their attention connects them to the screen: a glance, a mid-action moment, a stance that implies the countdown matters.
+- Screens in the scene are generated **blank** (dark panel, subtle glow) and the real UI is composited in afterward.
+
+### Style B: product scenes (no people)
+
+Clean, empty environments where the composited timer is the subject: a dim desk at night, an empty classroom before the exam, a kitchen counter. Calm "before it starts" tension. Use Style B when a cluster does not need a human to make its point, or as the fallback when Style A generations fail the checklist.
 
 ## Art direction (match the design system)
 
-The site is dark-first with one signature accent. Generated scenes must sit inside that system:
+The site is dark-first with one signature accent. Both styles sit inside that system:
 
-- **Palette:** near-black and charcoal environments (`#1C1C1E` territory), cool shadows. One warm or blue key light. The Super Easy Blue (`#0A84FF`) glow is reserved for the timer itself — the composited pill should be the brightest, bluest thing in the frame.
-- **Lighting:** dim, calm, evening-desk mood. Screens glow. No blown-out daylight, no HDR crunch.
-- **Camera:** slightly elevated three-quarter view of an environment, or straight-on display shot. Same lens feel across the whole set — the blog index page shows these side by side, and they must read as one photographer's work.
-- **Texture:** matte, physical, believable. Desks, walls, projector light, gym rubber floor. No glossy 3D-render sheen, no fantasy gradients, no floating abstract shapes.
+- **Palette:** near-black and charcoal environments (`#1C1C1E` territory), cool shadows, one warm or cool key light. The Super Easy Blue (`#0A84FF`) glow belongs to the timer: the composited screen should be the brightest, bluest thing in frame.
+- **Lighting:** cinematic and dim. Stage light, projector beam, screen glow, evening desk. No blown-out daylight, no HDR crunch.
+- **Camera:** photographic, shallow depth of field, consistent lens feel across the whole set. The blog index shows these side by side; they must read as one photographer's work.
+- **Texture:** matte and physical. No glossy 3D-render sheen, no fantasy gradients, no illustration/cartoon styles.
 
-## Hard bans (the slop list)
+## Rejection checklist (the slop pass)
 
-Reject and regenerate if the image contains any of:
+Zoom in and check every candidate. Reject if any of these appear:
 
-- **Any text or numbers generated by the model.** Signs, posters, whiteboards, keyboards with visible legends, clock faces. All readable text in the final image comes from the real screenshot overlay.
-- **Hands, faces, or people in the foreground.** People are allowed only distant, out of focus, or silhouetted (a speaker on a far stage, a class from behind). Close-up humans are where AI tells live.
-- **Fake Apple hardware.** No generated MacBooks with wrong keyboards or mangled logos. If a Mac must be visible, keep it distant/angled so details do not read, or composite real hardware photography.
-- **UI of any kind drawn by the model** — menu bars, docks, windows, phones with screens on.
-- **Style drift:** watercolor, flat illustration, cartoon, isometric 3D. The set is photographic.
-- Six-fingered anything, melted objects, impossible furniture joints. Zoom in and check edges before accepting.
+- **Model-drawn text or UI anywhere:** signs, posters, whiteboards, keyboard legends, menu bars, phone screens, clock faces. All readable content comes from the composited real screenshot.
+- **Hand problems:** wrong finger counts, melted grips, hands merged with objects. Hands near keyboards/remotes get extra scrutiny.
+- **Face problems:** asymmetric eyes, fused teeth, waxy skin, dead-eyed stares. The face must survive full-size viewing, not just thumbnail.
+- **Fake Apple hardware tells:** mangled logos, wrong keyboards. Keep hardware angled or distant so details do not read.
+- **Uncanny audiences:** crowds are hard. Keep audiences dark, out of focus, or silhouetted.
+- **Style drift:** illustration, isometric 3D, watercolor, oversaturated "AI look."
+- Impossible furniture, melted objects, physics that does not hold.
 
-## Composition spec
+## Structure: one image per cluster
 
-- **Hero:** 1600×900 (16:9). Subject weighted to one side, clean negative space on the other for the timer overlay.
-- **OG:** 1200×630 crop of the same scene. Check the crop before exporting; do not generate a separate scene.
-- The overlaid timer pill occupies roughly 20–30% of frame width, placed in the negative space, with its soft blue glow. Digits must be readable at index-card thumbnail size.
-- Keep the lower third calm — the blog index overlays the title near the image.
+Seven images cover all 25+ posts. Posts share their cluster's image until a post earns a unique one.
 
-## Per-cluster scenes
+| Image | Style | Scene | Posts |
+| --- | --- | --- | --- |
+| `presentation` | A | Presenter on stage facing a dark audience, confidence monitor at their feet showing the countdown | speaker-timer, powerpoint-countdown-timer, conference-timer, toastmasters-timer, big-timer-mac, presentation-timer-for-keynote |
+| `classroom` | A | Teacher at the front of a real classroom, countdown on the wall TV, students from behind | classroom-timer, exam-timer, quiz-timer, debate-timer |
+| `focus` | A or B | Dim desk at night, timer small in the corner of an external display | pomodoro-timer-mac, study-timer-mac, stopwatch-timer-mac, elapsed-time-timer, interval-timer-mac, timer-keyboard-shortcuts-mac, visual-timer-time-blindness |
+| `meetings` | A | Meeting room, countdown on the wall display, people mid-discussion | meeting-timer, zoom-timer-shared-screen, count-up-after-zero |
+| `workouts` | A | Home/garage gym, athlete resting between rounds, timer large on a screen | tabata-timer-mac, workout-timer-mac |
+| `kids` | A | Kitchen table or family desk, kid watching the big countdown, warmer light (still in palette) | visual-timer-for-kids |
+| `everyday` | B | Kitchen counter at dusk, Mac showing the timer beside the stove | egg-timer-mac, game-timer-overlay, countdown-to-a-time, clock-on-screen-mac |
 
-| Cluster | Scene | Timer placement |
-| --- | --- | --- |
-| Focus / productivity | Dim desk, external display glow, evening | Corner of frame, small (mini mode story) |
-| Presentation timers | Dark conference room or stage from the back, projector beam | Large, over the projected area |
-| Classroom | Empty classroom, projector or TV at front | Full screen on the display |
-| Meetings | Meeting room table, wall display, empty chairs | On the wall display |
-| Workouts | Home gym or garage gym, rubber floor, no people | Large digits, readable from distance |
-| Kids | Warm family desk or kitchen table, softer light (still in palette) | Big and friendly, full screen |
-| Everyday | Kitchen counter (egg), game table (game night) | Beside the action |
+## File structure
 
-Empty rooms work well: they avoid every people-ban and give the scene a calm "before it starts" tension that suits a timer.
+Working files stay out of the public repo (the repo is public). Only final JPGs are committed.
+
+```
+image-gen/                     # GITIGNORED. First pass lives here; evaluate, then
+                               # decide what (if anything) is worth backing up.
+  timers/                      # fresh app screenshots per mode (PNG, 2x)
+  scenes/<cluster>/            # raw generation candidates, keep the finalists
+  composites/                  # working files for screen replacement
+public/media/blog/             # committed, final output only
+  cluster-<name>.jpg           # hero, 1600x900, under ~200 KB
+  cluster-<name>-og.jpg        # OG crop, 1200x630
+```
+
+### Timer screenshots to capture (real app, 2.0.2)
+
+One clean capture per mode so each cluster's screen shows the right state:
+
+- Countdown mid-run (e.g. 14:32), blue theme
+- Pomodoro mode in a focus block
+- Stopwatch counting up (e.g. 04:32)
+- Tabata mid-round (work interval showing)
+- Clock mode showing a time
+- Full screen countdown (for wall TV / confidence monitor inserts)
+
+Capture at 2x, tight-cropped to the window/pill, PNG. These live in `image-gen/timers/`.
 
 ## Prompt recipe
 
-Structure every prompt the same way and reuse the style block verbatim for set consistency (use the tool's style-reference/seed features when available):
+Reuse the style block verbatim for set consistency (use the tool's style-reference/seed features when available). Screens are always prompted blank.
 
 ```
-[SCENE]: <one sentence: the environment, empty of people or people distant>
-[STYLE]: photographic, moody, dim ambient light, single cool key light,
+[SCENE]: <one sentence: who, where, doing what; screens in scene are
+dark powered-on panels with a faint glow, no content>
+[STYLE]: photographic, cinematic, dim ambient light, single key light,
 charcoal and near-black palette, matte surfaces, shallow depth of field,
-no text, no signage, no visible screens or UI, no people in foreground
-[FRAME]: 16:9, slightly elevated three-quarter view, clean negative
-space on the <left/right> third
+no readable text or signage anywhere, screens blank
+[FRAME]: 16:9, <camera position>, the blank screen surface clearly
+visible and large enough for a UI composite
 ```
 
 ## Workflow
 
-1. Generate the environment (several candidates; pick against the slop list above).
-2. Composite the real timer screenshot or pill render into the negative space. Add the soft blue glow so it sits in the scene's light.
-3. Export hero 1600×900 and OG 1200×630, compress (target under 200 KB), save to `public/media/blog/<slug>.jpg`.
-4. Update the post's `heroImage`, `heroAlt`, `ogImage`. Alt text describes the scenario factually ("A full screen countdown on a classroom display"), never "AI image of...".
-5. Ship in batches by cluster so the shared scene language stays consistent.
+1. Capture the real timer screenshots (once per app release).
+2. Generate scene candidates per cluster; run the rejection checklist; keep the finalists in `image-gen/scenes/<cluster>/`.
+3. Screen-replace: perspective-map the real screenshot onto the blank screen, match the scene's light (add the soft blue spill the screen would cast).
+4. Export hero 1600×900 and OG 1200×630 to `public/media/blog/`, compress to under ~200 KB.
+5. Update each post's `heroImage`, `heroAlt`, `ogImage`. Alt text describes the scenario factually ("A presenter checks a countdown on a confidence monitor"), never "AI image of...".
+6. Ship one cluster at a time so the set stays consistent.
 
 ## Acceptance checklist
 
-- [ ] The only text/digits in the image come from the real timer.
-- [ ] Reads correctly at thumbnail size on the blog index.
-- [ ] Palette sits in the site's dark system; timer is the brightest element.
-- [ ] No foreground people, hands, or fake hardware details.
+- [ ] The only readable text/digits come from the real composited screenshot.
+- [ ] Passes the slop pass at full size (faces, hands, hardware, crowds).
+- [ ] Palette sits in the site's dark system; the timer screen is the brightest element.
 - [ ] Same lighting/lens feel as the rest of the set.
-- [ ] The one-sentence angle ("shows the timer doing X at Y") is obvious.
+- [ ] Reads at thumbnail size on the blog index.
+- [ ] The angle is obvious in one sentence: "shows [who] using the timer [where]."
+- [ ] No OG text baked in: scene only.
