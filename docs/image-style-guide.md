@@ -72,18 +72,20 @@ public/media/blog/             # committed, final output only
   cluster-<name>-og.jpg        # OG crop, 1200x630
 ```
 
-### Timer screenshots to capture (real app, 2.0.2)
+### Timer screenshots (real app, 2.0.2)
 
-One clean capture per mode so each cluster's screen shows the right state:
+Source of truth: Dropbox `2 - Areas/Super Easy Timer/App Store/V2.0.2/Super Easy Timer 2.0.2/`. Working copies live in `image-gen/timers/` (gitignored); the seven composed App Store screens live in `image-gen/reference/` for style reference.
 
-- Countdown mid-run (e.g. 14:32), blue theme
-- Pomodoro mode in a focus block
-- Stopwatch counting up (e.g. 04:32)
-- Tabata mid-round (work interval showing)
-- Clock mode showing a time
-- Full screen countdown (for wall TV / confidence monitor inserts)
+Inventory (as of 2026-07-03):
 
-Capture at 2x, tight-cropped to the window/pill, PNG. These live in `image-gen/timers/`.
+- `countdown-blue-large/medium/small.png` — blue pill at 05:00, three sizes
+- `fullscreen-blue-2500.png` — full screen countdown at 25:00 (wall TV / confidence monitor inserts)
+- `stopwatch-cream.png` — stopwatch at 00:09.138, cream theme
+- `clock-black.png` — clock at 8:50 AM, black theme
+- `tabata-dark-round.png` — 00:20 with "WORK · Round 1 of 8" label, dark theme
+- `tabata-setup-dialog.png` — Customize Tabata sheet (work/rest/rounds)
+
+Still missing: a raw Pomodoro capture (red pill with "FOCUS · Session 1" label). It can be cropped from `reference/appstore-screen-2.jpg` if a native capture is not handy.
 
 ## Prompt recipe
 
