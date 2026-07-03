@@ -35,3 +35,14 @@ The am or pm tells the timer you mean a clock time, not a duration.
 ## One field, no setup
 
 There are no screens to dig through. Type, press Return, and the timer starts.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Type a duration.** "5 min", Return, running.
+[demo-video: type-to-start]
+
+**Type a deadline.** "5pm" counts down to five o'clock.
+[demo-video: countdown-to-time]
+-->
+

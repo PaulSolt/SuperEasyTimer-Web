@@ -28,4 +28,19 @@ A single quiet ding is easy to miss. Set the alarm to repeat and the timer to fl
 
 Starting a timer has to be easier than not starting one. Type "20 min" and press Return. That is the whole ritual. No app to configure, no session to name.
 
+> Try the [free web timer](/timer) right now. The Mac app is what keeps the countdown on top of everything else.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Keep the time in your line of sight.** The countdown stays pinned above whatever you are working in.
+[demo-video: pin-over-fullscreen]
+
+**Start with almost no ritual.** Type "20 min" and press Return.
+[demo-video: type-to-start]
+
+**Measure the overrun without the guilt.** Count up after zero shows the number, nothing else.
+[demo-video: count-up-after-zero]
+-->
+
 You cannot feel time. You can see it. Put it on screen and let your eyes do the job.

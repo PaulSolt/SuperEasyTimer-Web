@@ -14,7 +14,13 @@ A timer in a normal window disappears the moment you switch apps. Super Easy Tim
 
 ## Pin the timer above your windows
 
-Set a time, then turn on the always on top mode. The timer floats above your other windows. Switch apps, click around, keep working. The countdown stays where you put it.
+1. Type a time: "25 min", "45", or "5pm". Press Return.
+2. Turn on the always on top mode.
+3. Drag the timer to the corner you want it in.
+
+The timer floats above your other windows. Switch apps, click around, keep working. The countdown stays where you put it.
+
+> Try the [free web timer](/timer) to see the countdown. Staying on top of other apps is what the Mac app adds.
 
 ## It works over full screen apps too
 
@@ -22,4 +28,19 @@ Most always on top tricks stop at full screen. This one does not. The timer stay
 
 ## Move it out of the way
 
-Drag the timer to any corner. Shrink it small while you work, or make it large when the whole room needs to see it.
+Drag the timer to any corner. Shrink it small with [Mini Mode](/blog/resize-timer-mini-mode) while you work, or make it large when the whole room needs to see it.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Pin it above everything.** The countdown stays visible while you switch apps and windows.
+[demo-video: pin-over-fullscreen]
+
+**Start it in one line.** Type "25 min" and press Return.
+[demo-video: type-to-start]
+
+**Shrink it while you work.** Mini Mode keeps the countdown small in the corner.
+[demo-video: mini-mode]
+-->
+
+A countdown you can always see is the difference between guessing and knowing.

@@ -28,4 +28,19 @@ At zero the timer can flash and play an alarm, and repeat the alarm until someon
 
 Pick a [theme](/blog/timer-themes-transparent-frosted-liquid-glass) that suits the room: a clean white or cream for homework time, a bold color the kids picked themselves for cleanup races.
 
+> Try the [free web timer](/timer) full screen for tonight's homework. The Mac app adds the repeating alarm and the flash.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Fill the screen with the number.** Full screen shows one thing: how much time is left.
+[demo-video: full-screen]
+
+**Make the end unmissable.** The flash and repeating alarm settle "I did not hear it."
+[demo-video: flash-at-zero]
+
+**Run the routine.** Repeat with a delay: brush teeth, next kid, same timer.
+[demo-video: repeat-with-delay]
+-->
+
 Homework, screen time, taking turns, getting out the door: put the time where kids can see it, and let the timer be the bad guy.

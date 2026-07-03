@@ -23,3 +23,16 @@ Shrink the timer into a small floating window in the corner. Make it large when 
 ## Never lose it
 
 Edge guides and snap-back keep the floating timer from drifting off screen. It stays where you can find it, every time.
+
+> Try the [free web timer](/timer) first. Floating above your other apps is what the Mac app adds.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Float it above your work.** The countdown stays in view while you type and switch apps.
+[demo-video: pin-over-fullscreen]
+
+**Size it to the moment.** Shrink it into a corner, or stretch it for the room.
+[demo-video: mini-mode]
+-->
+

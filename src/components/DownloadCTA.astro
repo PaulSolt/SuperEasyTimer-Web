@@ -1,8 +1,9 @@
 ---
 import { site } from '../config/site';
+import StoreBadge from './StoreBadge.astro';
 
 interface Props {
-  /** Heading text. Defaults to the web-timer funnel line from the brief. */
+  /** Heading text. Defaults to the generic full-screen line. */
   heading?: string;
   /** Optional supporting line. */
   body?: string;
@@ -14,7 +15,7 @@ interface Props {
 
 const {
   heading = 'Want it on top, even over full screen presentations?',
-  body = 'This is the web version. Get the free Mac app to keep your timer visible over full screen apps and presentations. Windows soon.',
+  body = 'Get the free Mac app to keep your timer visible over full screen apps and presentations.',
   compact = false,
   location = 'download_cta',
 } = Astro.props;
@@ -25,17 +26,7 @@ const {
     <h2 class="download-cta-heading">{heading}</h2>
     <p class="download-cta-body">{body}</p>
     <div class="download-cta-actions">
-      <a
-        class="btn btn--primary"
-        href={site.macAppStoreUrl}
-        rel="noopener"
-        target="_blank"
-        data-ga="download_intent"
-        data-ga-platform="mac_app_store"
-        data-ga-location={location}
-      >
-        Get the free Mac app
-      </a>
+      <StoreBadge location={location} />
       {
         site.windowsDownloadUrl ? (
           <a

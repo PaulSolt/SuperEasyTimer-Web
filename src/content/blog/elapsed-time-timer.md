@@ -24,4 +24,14 @@ Set a countdown and turn on [count up after zero](/blog/count-up-after-zero). Wh
 
 Elapsed time only helps if you see it. Pin the timer [above your other windows](/blog/always-on-top-timer-mac), keep it small in a corner, or put it in the [menu bar](/blog/menu-bar-timer-mac). The number is there every time you glance up, and no window juggling is required.
 
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Start the stopwatch.** Type "stopwatch" and the elapsed time starts climbing.
+[demo-video: stopwatch]
+
+**Measure the overrun.** Count up after zero gives you a target and a measurement in one run.
+[demo-video: count-up-after-zero]
+-->
+
 Start the clock when you start the work. The answer is on screen when you want it.

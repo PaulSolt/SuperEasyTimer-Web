@@ -26,6 +26,21 @@ Next speaker, same slot: reset and start. Different slot: type the new length an
 
 ## Breaks that end on time
 
-Breaks drift worse than talks. Put a [full screen countdown](/blog/full-screen-countdown-timer-mac) on the room display during the break. People pace their coffee against it, and the next session starts with the room already seated.
+Breaks drift worse than talks. Put a [full screen countdown](/blog/full-screen-countdown-timer-mac) on the room display during the break, or type the restart time itself: "1:30pm" counts down to the moment the next session begins. People pace their coffee against it, and the next session starts with the room already seated.
+
+> Try the [free web timer](/timer) on the room Mac. The Mac app adds full screen and count up for the day's sessions.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Start each slot in one line.** Type "25 min" and press Return as the talk begins.
+[demo-video: type-to-start]
+
+**Fill the room display.** Take the countdown full screen so it reads from the lectern.
+[demo-video: full-screen]
+
+**End the break at a clock time.** Type "1:30pm" and the countdown runs to the restart.
+[demo-video: countdown-to-time]
+-->
 
 The schedule is the product. A visible clock is the cheapest way to keep it.

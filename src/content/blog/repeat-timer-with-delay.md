@@ -23,3 +23,11 @@ Set an optional delay so there is a pause between rounds. The timer plays the so
 ## Pick what happens at zero
 
 Combine the end options to fit your routine. Flash the time, count up after zero, and restart automatically, all at once.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Let the timer restart itself.** The countdown ends, waits the delay, and runs again.
+[demo-video: repeat-with-delay]
+-->
+

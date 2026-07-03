@@ -21,6 +21,8 @@ PowerPoint's slideshow mode takes the whole screen, and the clock goes with it. 
 
 The countdown floats above the slides. You see the time. The audience sees your presentation.
 
+> Try the [free web timer](/timer) to see the countdown. The Mac app is what stays on top of the slideshow.
+
 ## It does not interfere with your slides
 
 The timer is a passive overlay. It does not steal focus and it does not swallow your clicks, so advancing slides, presenter tools, and embedded videos all work exactly as before.
@@ -32,5 +34,18 @@ Drag the timer to whichever corner your eyes visit naturally, and shrink it smal
 ## Rehearse against the same clock
 
 Run the deck at home with the timer going, and turn on [count up after zero](/blog/count-up-after-zero) to see how far over you land. Cut, run it again, and walk in knowing your timing.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Start the talk clock.** Type "20 minutes" and press Return before the slideshow.
+[demo-video: type-to-start]
+
+**Stay on top of the slideshow.** The countdown keeps floating when PowerPoint takes the screen.
+[demo-video: pin-over-fullscreen]
+
+**See your overrun in rehearsal.** Count up after zero shows how far past your slot the run-through landed.
+[demo-video: count-up-after-zero]
+-->
 
 Keynote works the same way; here is the [Keynote guide](/blog/presentation-timer-for-keynote). Whatever the room's software, the countdown stays with you.

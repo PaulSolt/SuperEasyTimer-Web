@@ -25,3 +25,11 @@ Recording, presenting, gaming, or writing in a full screen app hides the menu ba
 The clock and the timer are the same app. Type "clock" to watch the time, then type "25 min" when it is time to work. One field, no settings to dig through.
 
 Make the clock match your screen with transparent, frosted, and [Liquid Glass themes](/blog/timer-themes-transparent-frosted-liquid-glass). A clock on your desk is furniture. It might as well look right.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Put the time on screen.** Type "clock" and the current time takes the display.
+[demo-video: clock]
+-->
+

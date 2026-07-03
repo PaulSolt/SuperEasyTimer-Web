@@ -24,8 +24,23 @@ Keep the timer [pinned above your notes](/blog/always-on-top-timer-mac) or sized
 
 Turn on [count up after zero](/blog/count-up-after-zero). When a speaker passes their window, the timer counts up, and your timer's report has exact numbers: "Sarah finished 42 seconds over." Precise, fair, and no stopwatch fumbling.
 
+> Try the [free web timer](/timer) at your next meeting. The Mac app adds count up and the always visible modes.
+
 ## Online meetings too
 
 For hybrid and Zoom meetings, the timer [stays visible over the meeting window](/blog/always-on-top-timer-mac), so you can watch the clock and the speaker at the same time. Share it on screen if the club wants everyone to see it.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Type the speech window.** "7 min" for a prepared speech, "2 min" for Table Topics.
+[demo-video: type-to-start]
+
+**Keep the countdown above your notes.** The timer stays pinned while you track the cards.
+[demo-video: pin-over-fullscreen]
+
+**Report exact overtime.** Count up after zero puts the overrun on screen to the second.
+[demo-video: count-up-after-zero]
+-->
 
 Reset between speakers takes a second. The timing report writes itself. That is the whole job, done well.

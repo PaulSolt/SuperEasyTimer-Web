@@ -24,4 +24,14 @@ A stopwatch buried behind windows is a stopwatch you forget to stop. Pin it [alw
 
 You do not have to choose one app for each. Type "25 min" for a countdown, "stopwatch" to count up, or turn on [count up after zero](/blog/count-up-after-zero) to get both in a single run: the countdown ends, then the overtime starts climbing.
 
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Count up from zero.** Type "stopwatch" and the clock starts climbing.
+[demo-video: stopwatch]
+
+**Get both in one run.** Count up after zero turns a countdown into an overtime measurement.
+[demo-video: count-up-after-zero]
+-->
+
 No lap buttons to learn, no modes to dig through. Type, press Return, and the clock is running.

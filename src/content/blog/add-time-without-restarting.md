@@ -31,3 +31,11 @@ Going faster than planned? Take time off the same way:
 ## Keep your place
 
 The timer keeps running while you adjust. No restart, no reset, no losing track of where you were.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Stretch a running countdown.** Type "+5m" and the number updates in place.
+[demo-video: add-time]
+-->
+

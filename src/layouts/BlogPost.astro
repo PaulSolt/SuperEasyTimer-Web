@@ -12,6 +12,52 @@ const { title, description, publishDate, keyword, cluster, heroImage, heroAlt, o
   post.data;
 const socialImage = ogImage ?? heroImage;
 
+// CTA copy tailored to each cluster. Falls back to the generic line for
+// clusters not listed here.
+const clusterCTAs: Record<string, { heading: string; body: string }> = {
+  Classroom: {
+    heading: 'Want a better timer for your classroom?',
+    body: 'Get the free Mac app to keep your timer visible in full screen for your classroom.',
+  },
+  'Presentation timers': {
+    heading: 'Put the timer on top of your next presentation.',
+    body: 'Get the free Mac app. It stays visible over Keynote, PowerPoint, and any full screen app.',
+  },
+  'Always-on-top utilities': {
+    heading: 'Keep a timer on top of every window.',
+    body: 'Get the free Mac app to pin the countdown above your work, even over full screen apps.',
+  },
+  'Focus / productivity': {
+    heading: 'Make your next focus session visible.',
+    body: 'Get the free Mac app and keep the countdown in view while you work.',
+  },
+  Meetings: {
+    heading: 'Keep your next meeting on time.',
+    body: 'Get the free Mac app and put the countdown where everyone can see it.',
+  },
+  Workouts: {
+    heading: 'Time your next workout at a glance.',
+    body: 'Get the free Mac app for Tabata rounds, stopwatch, and countdowns you can read mid-set.',
+  },
+  Kids: {
+    heading: 'Make time visible for your kids.',
+    body: 'Get the free Mac app and show a countdown big enough for kids to follow.',
+  },
+  Everyday: {
+    heading: 'Make everyday time visible.',
+    body: 'Get the free Mac app for cooking, games, and every countdown in between.',
+  },
+  'Ease of use': {
+    heading: 'Type, press Return, and the timer starts.',
+    body: 'Get the free Mac app and start any timer with one line of typing.',
+  },
+  Customization: {
+    heading: 'Make the timer look the way you want.',
+    body: 'Get the free Mac app with transparent, frosted, and Liquid Glass themes.',
+  },
+};
+const cta = clusterCTAs[cluster];
+
 const formattedDate = publishDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -43,7 +89,7 @@ const formattedDate = publishDate.toLocaleDateString('en-US', {
         <slot />
       </div>
 
-      <DownloadCTA compact location="blog" />
+      <DownloadCTA compact location="blog" heading={cta?.heading} body={cta?.body} />
     </div>
   </article>
 </BaseLayout>
@@ -89,21 +135,26 @@ const formattedDate = publishDate.toLocaleDateString('en-US', {
   .post-body :global(h2) {
     margin-top: 2.5rem;
     margin-bottom: 0.75rem;
+    font-size: clamp(1.5rem, 3vw, 1.875rem);
   }
   .post-body :global(h3) {
     margin-top: 2rem;
     margin-bottom: 0.5rem;
     color: var(--text);
+    font-size: clamp(1.1875rem, 2.5vw, 1.375rem);
   }
   .post-body :global(p) {
     margin-bottom: 1.25rem;
     color: var(--text-muted);
-    font-size: 1.0625rem;
+    font-size: 1.1875rem;
+    line-height: 1.65;
   }
   .post-body :global(ul),
   .post-body :global(ol) {
     margin: 0 0 1.25rem 1.25rem;
     color: var(--text-muted);
+    font-size: 1.1875rem;
+    line-height: 1.65;
   }
   .post-body :global(li) {
     margin-bottom: 0.5rem;

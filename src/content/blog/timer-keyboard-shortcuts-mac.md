@@ -28,4 +28,14 @@ Shortcuts matter most when clicking is not an option. While your slides are up, 
 
 Menu bar, [floating](/blog/floating-timer-mac), mini, full screen: the shortcuts work the same wherever the timer lives. Keep it small in the corner and run it entirely from the keyboard.
 
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Start from the keyboard.** Type "25 min" and press Return. No mouse.
+[demo-video: type-to-start]
+
+**Adjust without restarting.** Type "+5m" while the timer runs.
+[demo-video: add-time]
+-->
+
 Set the shortcuts once. After a day they are muscle memory, and the timer stops being a window you manage.

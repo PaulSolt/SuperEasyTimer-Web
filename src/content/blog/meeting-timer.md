@@ -26,6 +26,21 @@ Meeting ends at 3pm? Type "3pm" and the timer counts down to the clock time. Eve
 
 ## Make overtime visible
 
-Turn on [count up after zero](/blog/count-up-after-zero) and the timer keeps counting past the end. The overtime number climbing on screen is the most polite way ever invented to end a meeting.
+Turn on [count up after zero](/blog/count-up-after-zero) and the timer keeps counting past the end. The overtime number climbing on screen ends the meeting without anyone having to say it is over.
+
+> Try the [free web timer](/timer) in your next meeting. The Mac app adds count up, the pinned modes, and full screen for the room.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Time-box an agenda item.** Type "10 min" and press Return as the item starts.
+[demo-video: type-to-start]
+
+**Count down to the hard stop.** Type "3pm" and the runway is on the screen.
+[demo-video: countdown-to-time]
+
+**Make overtime visible.** Count up after zero keeps the number climbing past the end.
+[demo-video: count-up-after-zero]
+-->
 
 No meeting-management platform, no integrations, no bot in the calendar. One readable countdown, and suddenly the agenda means something.

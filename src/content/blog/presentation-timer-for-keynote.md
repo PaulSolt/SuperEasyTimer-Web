@@ -58,4 +58,17 @@ The same setup works while you rehearse. Set the timer, run your deck, and learn
 
 Nothing about this is Keynote-specific. PowerPoint in full-screen slideshow mode behaves the same way, and so do most full-screen apps. Set the timer once, present in whatever app you like.
 
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Type your talk length.** "20 minutes", Return, running.
+[demo-video: type-to-start]
+
+**Stay on top of the slideshow.** Keynote takes the screen and the countdown keeps floating.
+[demo-video: pin-over-fullscreen]
+
+**See your rehearsal overrun.** Count up after zero shows how far past your slot you landed.
+[demo-video: count-up-after-zero]
+-->
+
 If you give talks, teach, or run timed sessions, a presentation timer that stays on top of your slides is the difference between guessing and knowing.

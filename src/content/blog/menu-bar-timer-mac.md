@@ -22,4 +22,12 @@ Click the menu bar timer to start, reset, or open settings. Start and pause with
 
 ## Use shortcuts from any app
 
-Global keyboard shortcuts let you start, pause, and reset the timer without leaving what you are doing. The menu bar keeps the time in sight the whole time.
+Global [keyboard shortcuts](/blog/timer-keyboard-shortcuts-mac) let you start, pause, and reset the timer without leaving what you are doing. The menu bar keeps the time in sight the whole time.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Put the countdown next to the clock.** The running time sits in the menu bar at the top of your screen.
+[demo-video: menu-bar]
+-->
+

@@ -27,3 +27,11 @@ Use a transparent or frosted theme to keep the timer subtle while you work. Swit
 ## Stay out of the way
 
 Controls and the text input fade away when you are not editing the timer. You see the time, not the buttons. They come back the moment you need them.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Cycle the themes.** Transparent, frosted, Liquid Glass, and the bold colors, on the same countdown.
+[demo-video: themes]
+-->
+

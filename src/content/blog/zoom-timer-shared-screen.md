@@ -28,4 +28,19 @@ Type "10 min" for the demo, "5" for questions, "3pm" to count down to the hard s
 
 Shrink the timer into a corner with [Mini Mode](/blog/resize-timer-mini-mode), or pick a [transparent theme](/blog/timer-themes-transparent-frosted-liquid-glass) so it sits quietly over your slides. It is there when you glance, invisible when you focus.
 
+> Try the [free web timer](/timer) in a browser tab you share. The Mac app is what stays visible over the full screen meeting window.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Stay visible while you present.** The countdown keeps floating over the full screen meeting window.
+[demo-video: pin-over-fullscreen]
+
+**Adjust mid-call.** Type "+2m" while the timer runs and the countdown stretches in place.
+[demo-video: add-time]
+
+**Shrink it into a corner.** Mini Mode keeps the timer readable without covering your slides.
+[demo-video: mini-mode]
+-->
+
 Webinars, standups, workshops, remote classes: the call runs better when the time is on the screen.

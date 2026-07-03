@@ -22,7 +22,9 @@ Show the countdown [full screen](/blog/full-screen-countdown-timer-mac) or large
 
 ## A clear, neutral signal at zero
 
-The timer can flash and sound an alarm when time expires. The signal comes from the screen, not from a judge's judgment call, and it is the same for both sides.
+The timer can flash and sound an alarm when time expires. The signal comes from the screen, not from a judge's call, and it is the same for both sides.
+
+> Try the [free web timer](/timer) for a single speech. The Mac app adds the flash, count up, and full screen for the room.
 
 ## Track prep time by counting down
 
@@ -31,5 +33,18 @@ Each team's prep bank is just another countdown: type "5 min" when they start us
 ## Overtime on the record
 
 With [count up after zero](/blog/count-up-after-zero), a speaker who talks past the signal accumulates visible overtime. The number is on the screen for the whole room.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Type the speech length.** "8 min" for a constructive, "3 min" for cross-ex. Return starts the clock.
+[demo-video: type-to-start]
+
+**Pause the prep bank.** Click the timer to pause when a team stops using prep, click again to resume.
+[demo-video: pause-resume]
+
+**Put overtime on the record.** Count up after zero shows exactly how far past the signal a speaker went.
+[demo-video: count-up-after-zero]
+-->
 
 Classroom debates, tournaments, practice rounds: set the format's times once, and let the clock be the one thing nobody argues with.

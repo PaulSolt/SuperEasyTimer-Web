@@ -23,3 +23,11 @@ Pull it small and keep it in the corner while you work. Mini Mode gives you a ti
 ## Never lose it
 
 Edge guides and snap-back keep the timer on screen, even when it is small. Drag it near an edge and it settles into place instead of slipping away.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Shrink it into the corner.** Mini Mode keeps a glanceable countdown that does not crowd your screen.
+[demo-video: mini-mode]
+-->
+

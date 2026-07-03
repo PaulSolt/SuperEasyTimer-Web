@@ -28,4 +28,14 @@ The timer moves from work to rest and back on its own. No taps between intervals
 
 Warm up with a plain countdown, run your Tabata rounds, then type a stretch timer at the end. The same app covers the whole workout.
 
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Type "tabata".** Work, rest, and rounds run as a cycle with the round count on screen.
+[demo-video: tabata]
+
+**Catch the change mid-set.** The flash signals work-to-rest even when you cannot hear it.
+[demo-video: flash-at-zero]
+-->
+
 Set it once, press start, and train.

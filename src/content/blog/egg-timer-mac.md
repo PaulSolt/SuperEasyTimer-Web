@@ -28,4 +28,19 @@ Make the digits large, or send the timer [full screen](/blog/full-screen-countdo
 
 Pasta after the eggs? Type the next time and press Return. Need to hold something warm in intervals? A [repeat timer with a delay](/blog/repeat-timer-with-delay) checks in every few minutes so you remember to stir.
 
+> Cooking right now? The [free web timer](/timer) works in any browser. The Mac app adds the repeating alarm and the flash.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Start it with wet hands.** Type "12" and press Return. Done.
+[demo-video: type-to-start]
+
+**Hear it over the range hood.** The flash and repeating alarm carry across the kitchen.
+[demo-video: flash-at-zero]
+
+**Remember to stir.** A repeat timer with a delay checks in every few minutes.
+[demo-video: repeat-with-delay]
+-->
+
 Eggs, rice, tea, dough, pizza: if the recipe has a number, type it and cook.

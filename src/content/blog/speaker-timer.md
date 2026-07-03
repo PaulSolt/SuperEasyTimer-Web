@@ -20,6 +20,8 @@ Type the speaking slot: "15 min", "20", "45 min". Press Return when the speaker 
 
 Put the timer on a confidence monitor or a laptop facing the speaker, and take it [full screen](/blog/full-screen-countdown-timer-mac) so it reads from the stage. The speaker glances at the number instead of doing math on a wall clock.
 
+> Try the [free web timer](/timer) on any laptop facing the stage. The Mac app adds full screen, count up, and the pinned modes.
+
 ## Overtime, measured
 
 Turn on [count up after zero](/blog/count-up-after-zero). When a speaker runs long, the timer counts up past zero, so both of you know exactly how far over they are. It settles the "just two more minutes" negotiation with a number.
@@ -27,5 +29,18 @@ Turn on [count up after zero](/blog/count-up-after-zero). When a speaker runs lo
 ## Reset for the next speaker in seconds
 
 Same slot length? Reset and start. Different slot? Type the new time and press Return. The changeover takes less time than the applause. If speakers present from the same Mac, the timer can stay [pinned above their slides](/blog/presentation-timer-for-keynote).
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Set the slot.** Type "15 min" and press Return as the speaker starts.
+[demo-video: type-to-start]
+
+**Face it at the stage.** Take the countdown full screen so it reads from the lectern.
+[demo-video: full-screen]
+
+**Measure the overrun.** Count up after zero shows exactly how far past the slot a speaker went.
+[demo-video: count-up-after-zero]
+-->
 
 Conferences, meetups, lightning talks, panels: one readable countdown does more for the schedule than any amount of moderating.

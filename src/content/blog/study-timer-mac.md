@@ -28,4 +28,19 @@ Turn on [repeat with a delay](/blog/repeat-timer-with-delay): study block, break
 
 Turn on [count up after zero](/blog/count-up-after-zero) to see how far past the block you kept going, or type "stopwatch" to measure an open-ended review session.
 
+> Try a "45 min" session in the [free web timer](/timer). The Mac app adds Mini Mode, repeat, and the always visible modes.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Type the session.** "45 min", Return, study.
+[demo-video: type-to-start]
+
+**Let the break start itself.** Repeat with a delay runs study block, break, study block.
+[demo-video: repeat-with-delay]
+
+**See where the time went.** Count up after zero shows how far past the block you kept going.
+[demo-video: count-up-after-zero]
+-->
+
 No account, no streak to lose, nothing to feed. The timer does its job so you can do yours.

@@ -28,4 +28,13 @@ Keep the countdown [pinned above your work](/blog/always-on-top-timer-mac) or in
 
 The same field takes both forms. "45 min" when you care about the length, "5pm" when you care about the moment. [Type what you mean](/blog/type-to-start-timer) and the timer figures out which one it is.
 
+> Type "5pm" into the [free web timer](/timer) right now. The Mac app adds the pinned modes so the deadline stays in view.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Type the deadline.** "10:30am" and the timer does the subtraction.
+[demo-video: countdown-to-time]
+-->
+
 Deadlines are clock times. Now your countdown speaks that language too.

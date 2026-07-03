@@ -32,4 +32,17 @@ Each round can end with a flash and an alarm that repeats until you notice. The 
 
 Pin the interval timer [above your windows](/blog/always-on-top-timer-mac) or keep it [small in a corner](/blog/resize-timer-mini-mode). Glance up, see where the round stands, keep going.
 
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Loop the countdown.** Turn on repeat and the timer restarts itself at zero.
+[demo-video: repeat-with-delay]
+
+**Make each round end loudly.** The flash at zero marks the change even when you are not looking.
+[demo-video: flash-at-zero]
+
+**Need work and rest built in?** Type "tabata" for rounds with a rest between them.
+[demo-video: tabata]
+-->
+
 No presets to program, no laps to configure. A countdown on a loop covers more than you would think.

@@ -23,3 +23,11 @@ Run your talk against the timer and watch the count up. It shows exactly where y
 ## Keep meetings honest
 
 In a meeting, count up makes overtime visible to everyone. The number keeps climbing until you wrap up.
+
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Watch the timer pass zero.** Instead of stopping, the countdown turns into a count up.
+[demo-video: count-up-after-zero]
+-->
+

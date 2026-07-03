@@ -28,4 +28,17 @@ Shrink the overlay with [Mini Mode](/blog/resize-timer-mini-mode) and park it in
 
 "One hour, then we stop" works better when the hour is visible and counting. At zero the alarm repeats until someone deals with it, which is the point.
 
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Loop the turn timer.** "1 min" with repeat restarts every turn.
+[demo-video: repeat-with-delay]
+
+**Float it over the game.** The countdown stays on top of full screen apps without stealing focus.
+[demo-video: pin-over-fullscreen]
+
+**Keep it out of the action.** Mini Mode parks the overlay in a corner.
+[demo-video: mini-mode]
+-->
+
 Game night or ranked queue: the clock plays fair when everyone can see it.

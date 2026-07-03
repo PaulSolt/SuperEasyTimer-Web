@@ -28,4 +28,17 @@ Pick an alarm that repeats until you notice, and turn on the flash so the change
 
 The same field times everything else in the session. "30s" for a plank. "5 min" for a cooldown. A bare number is minutes, so "3" gives you a 3 minute rest.
 
+<!-- show-me-how (hidden until demo videos exist; see docs/content-upgrade-plan.md)
+## Show me how
+
+**Loop your work interval.** "45s" with repeat and a rest delay runs the whole set.
+[demo-video: repeat-with-delay]
+
+**Run classic intervals.** Type "tabata" for work, rest, and rounds.
+[demo-video: tabata]
+
+**See the round change.** The flash reads from across the room.
+[demo-video: flash-at-zero]
+-->
+
 Set the rounds, press start, and get under the bar.
