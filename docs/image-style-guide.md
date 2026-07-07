@@ -115,6 +115,22 @@ no readable text or signage anywhere, screens blank
 visible and large enough for a UI composite
 ```
 
+## Locked generation settings
+
+First shipped set (presentation cluster, 2026-07-03): Cinema Studio Image 2.5 (`cinematic_studio_2_5`) via Higgsfield, 2K, 16:9, two candidates per batch. The presentation hero came from seed 845400. Reuse the model and style block for the remaining clusters so the set reads as one photographer's work.
+
+## Screen replacement recipe (ImageMagick)
+
+1. **Mark the corners in Preview.** Draw a red border on the screen surface, then File > Export as PNG — markup must be flattened into the pixels (verify red actually exists in the file before trusting it). Extract corners from the red extremes: min/max of x+y give TL/BR, max/min of x−y give TR/BL. Inset by the stroke width. Do not eyeball the quad; the right edge of a foreshortened screen is where eyeballing fails.
+2. **Warp sharp.** `+distort Perspective` with `-virtual-pixel transparent`, and `-background none` before `-layers merge` (the default background silently flattens to opaque white).
+3. **Defocus in place, never the layer.** Composite the warped screenshot sharp, then blend a ~2.5px-blurred copy of the whole composite back through a feathered (~7px) mask of the screen quad. Blurring the warped layer alone drags transparent black into the edges and leaves a dark fringe.
+4. **Bloom, then glare, then spill.** Screen-blend the warped layer blurred ~12px at ~45% alpha (bright digits halate like a real out-of-focus screen). Restore the scene's own glare hotspot (grayscale, level 80–100%, masked to the quad, screen blend). Wide blue spill stays subtle: ~35px blur at ~12% alpha, or it hazes the bezel and floor.
+5. **Crop edge slivers at export**, before resizing to 1600×900 and 1200×630.
+
+### Model-combine fallback
+
+Feeding the scene plus the screenshot to an editing model (Nano Banana) preserved the digits, but it redrew the bezel rounder, wrapped the monitor in a halo glow, and re-rendered the whole frame brighter and smoother. Use it only when a manual fit fails, and forbid glow and bezel changes in the prompt.
+
 ## Workflow
 
 1. Capture the real timer screenshots (once per app release).
