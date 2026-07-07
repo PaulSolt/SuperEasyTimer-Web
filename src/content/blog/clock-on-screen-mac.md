@@ -4,13 +4,13 @@ description: "Show a clock that stays visible on your Mac: floating, in a corner
 publishDate: 2026-07-03
 keyword: "clock on screen mac"
 cluster: "Ease of use"
-heroImage: "/media/screenshots-clean/keep-visible.jpg"
-heroAlt: "Super Easy Timer kept visible on a Mac desktop."
-ogImage: "/media/screenshots-clean/keep-visible.jpg"
+heroImage: "/media/blog/mode-clock.jpg"
+heroAlt: "Clock mode showing the current time, 8:50 AM."
+ogImage: "/media/blog/mode-clock.jpg"
 draft: false
 ---
 
-The Mac has a clock, but it lives in the corner of the menu bar and disappears in full screen apps. When you actually need to watch the time, that is not enough. Super Easy Timer has a Clock mode: type "clock" or "time" and the current time takes the display.
+The Mac has a clock, but it lives in the corner of the menu bar and disappears in full screen apps. When you actually need to watch the time, that is not enough. Super Easy Timer has a Clock mode: type "clock" or "time" and the current time takes the display, with seconds if you want them.
 
 ## The time, where you can see it
 

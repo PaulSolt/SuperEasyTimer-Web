@@ -4,9 +4,9 @@ description: "Run Pomodoro focus sessions on your Mac without a complicated prod
 publishDate: 2026-07-03
 keyword: "pomodoro timer mac"
 cluster: "Focus / productivity"
-heroImage: "/media/screenshots-clean/just-type.jpg"
-heroAlt: "Typing pomodoro to switch the timer into Pomodoro mode."
-ogImage: "/media/screenshots-clean/just-type.jpg"
+heroImage: "/media/blog/mode-pomodoro.jpg"
+heroAlt: "Pomodoro mode counting down from 25 minutes with the FOCUS Session 1 label."
+ogImage: "/media/blog/mode-pomodoro.jpg"
 draft: false
 ---
 
@@ -14,11 +14,21 @@ Most Pomodoro apps want you to build a system: projects, tags, session logs, str
 
 ## Switch modes by typing
 
-There is no settings maze. Type "pomodoro" in the timer field and the app switches to Pomodoro mode. Work in focused blocks, take your breaks, and get back to it.
+There is no settings maze. Type "pomodoro" in the timer field and the app switches to Pomodoro mode.
+
+1. Type "pomodoro" and press Return. A 25 minute focus session starts, labeled "FOCUS · Session 1".
+2. Work until the session ends. Breaks follow, and the label counts your sessions for you.
+3. Want different lengths? Type "pomodoro setup" and a guided setup walks you through the session and break times.
+
+The input autocompletes and keeps your history, so tomorrow you can bring back the same setup without retyping it.
 
 ## Keep the countdown where you can see it
 
 A Pomodoro only works if you notice it. Pin the timer [always on top](/blog/always-on-top-timer-mac) of your editor, keep it in the [menu bar](/blog/menu-bar-timer-mac), or shrink it into a corner. The countdown stays in view while you work, even over full screen apps.
+
+One session is about the size of one code review, one draft section, or one inbox pass. Pick the task before you press Return and the timer becomes the deadline for it.
+
+When a session ends, choose how loud the handoff is: an alarm sound, a silent flash of the display, or both. In an open office or on a call, the flash alone marks the break without making a sound.
 
 ## Repeat without restarting
 
@@ -42,3 +52,5 @@ No accounts. No charts to feed. No streak to protect. When you are done, close t
 -->
 
 > Want to try the idea first? Run a 25 minute session in the [free web timer](/timer), then get the Mac app for Pomodoro mode and always on top.
+
+Type "pomodoro", press Return, and the first session is running.
