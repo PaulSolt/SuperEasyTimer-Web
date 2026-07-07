@@ -47,6 +47,76 @@ const sections = [
     alt: 'End-of-timer options: flash the time, count up, and restart automatically with a delay.',
   },
 ];
+
+// FAQ. Copy graded A (20/20) with the blog-audit rubric before integration.
+// The visible answers and the FAQPage JSON-LD derive from this one array so
+// they always match (Google requires schema content to be visible on-page).
+const faqs = [
+  {
+    q: 'How do I keep a timer always on top on Mac?',
+    a: 'Type a time like "25 min" and press Return, then turn on always on top. The timer floats above your other windows and stays in the corner you drag it to while you work.',
+    href: '/blog/always-on-top-timer-mac',
+  },
+  {
+    q: 'Can I see the timer while presenting in Keynote or PowerPoint?',
+    a: 'Yes. Most always on top tricks stop at full screen. Super Easy Timer stays visible over full screen Keynote, PowerPoint, and Zoom, and it does not steal focus from your slides.',
+    href: '/blog/presentation-timer-for-keynote',
+  },
+  {
+    q: 'Is there a timer in the Mac menu bar?',
+    a: 'Yes. The countdown sits at the top of your screen, next to the clock, so the time stays visible without another window on your desktop.',
+    href: '/blog/menu-bar-timer-mac',
+  },
+  {
+    q: 'Does Super Easy Timer have a Pomodoro timer?',
+    a: 'Yes. Type "pomodoro" and press Return to start a focus session with breaks. Type "pomodoro setup" to change the session and break lengths.',
+    href: '/blog/pomodoro-timer-mac',
+  },
+  {
+    q: 'Can the timer keep counting after it reaches zero?',
+    a: 'Yes. Turn on count up and the timer keeps going after it reaches zero. Instead of stopping, it shows how long ago the time ran out.',
+    href: '/blog/count-up-after-zero',
+  },
+  {
+    q: 'Can I show a full screen countdown to a classroom?',
+    a: 'Yes. The digits fill the display, large enough to read from the back of the room. Type the length of the quiz, like "45 min", or type "10:30am" to count down to the time the exam ends.',
+    href: '/blog/classroom-timer',
+  },
+  {
+    q: 'Does it work as a stopwatch?',
+    a: 'Yes. Type "stopwatch" and the timer counts up from zero, with tenths, hundredths, or milliseconds.',
+    href: '/blog/stopwatch-timer-mac',
+  },
+  {
+    q: 'Is Super Easy Timer free?',
+    a: 'Yes. Super Easy Timer is a free download on the Mac App Store. No ads. No accounts. It requires macOS 15 or later.',
+    href: null,
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: site.name,
+  operatingSystem: `macOS ${site.minMacOS} or later`,
+  applicationCategory: 'ProductivityApplication',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  description: site.description,
+  url: site.url,
+  downloadUrl: site.macAppStoreUrl,
+  image: new URL('/icon.png', site.url).href,
+  author: { '@type': 'Person', name: 'Paul Solt' },
+};
 ---
 
 <BaseLayout title={site.name} description={site.description}>
@@ -193,12 +263,47 @@ const sections = [
     </div>
   </section>
 
+  <!-- FAQ: every answer fully visible (no collapsed disclosure), matching the FAQPage JSON-LD -->
+  <section class="section faq-section">
+    <div class="container narrow">
+      <h2 class="text-center">Frequently asked questions</h2>
+      <dl class="faq-list">
+        {
+          faqs.map((f) => (
+            <div class="faq-item">
+              <dt>{f.q}</dt>
+              <dd>
+                {f.a}
+                {f.href ? (
+                  <> <a href={f.href}>Learn more</a></>
+                ) : (
+                  <> <a
+                    href={site.macAppStoreUrl}
+                    rel="noopener"
+                    target="_blank"
+                    data-ga="download_intent"
+                    data-ga-platform="mac_app_store"
+                    data-ga-location="faq"
+                  >Get the free Mac app</a></>
+                )}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
   <!-- Download CTA -->
   <section class="section">
     <div class="container">
       <DownloadCTA location="home_bottom" />
     </div>
   </section>
+
+  <!-- Structured data for Google: app metadata + the FAQ above -->
+  <script type="application/ld+json" set:html={JSON.stringify(appSchema)} is:inline />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
 </BaseLayout>
 
 <script>
@@ -419,5 +524,31 @@ const sections = [
       height: 0;
       overflow: hidden;
     }
+  }
+
+  /* FAQ */
+  .faq-list {
+    margin: 2.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .faq-item {
+    padding: 1.375rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .faq-item:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item dt {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1.125rem;
+  }
+  .faq-item dd {
+    margin: 0.5rem 0 0;
+    color: var(--text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
   }
 </style>

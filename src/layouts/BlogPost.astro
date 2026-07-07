@@ -63,9 +63,23 @@ const formattedDate = publishDate.toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
+// BlogPosting structured data so posts are eligible for article rich results.
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const postSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: publishDate.toISOString().split('T')[0],
+  image: new URL(socialImage, Astro.site).href,
+  author: { '@type': 'Person', name: 'Paul Solt', url: 'https://supereasytimer.com' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+};
 ---
 
 <BaseLayout title={title} description={description} ogImage={socialImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(postSchema)} is:inline />
   <article class="post">
     <div class="container post-narrow">
       <header class="post-header">
