@@ -80,6 +80,16 @@ const description =
         <li><strong>Sound:</strong> a gentle tone plays when the timer finishes, after your first click.</li>
       </ul>
 
+      <h2>Popular timers</h2>
+      <p class="preset-links">
+        <a href="/timer/5-minutes">5 minute timer</a>
+        <a href="/timer/10-minutes">10 minute timer</a>
+        <a href="/timer/15-minutes">15 minute timer</a>
+        <a href="/timer/25-minutes">25 minute timer</a>
+        <a href="/timer/30-minutes">30 minute timer</a>
+        <a href="/timer/1-hour">1 hour timer</a>
+      </p>
+
       <DownloadCTA
         location="timer_bottom"
         body="This is the web version. Get the free Mac app to keep your timer visible over full screen apps and presentations."
@@ -126,6 +136,13 @@ const description =
   }
   .tool-info strong {
     color: var(--text);
+  }
+  .preset-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem 1.25rem;
+    margin: 1rem 0 2.5rem;
+    color: var(--text-muted);
   }
 
   .upsell {
