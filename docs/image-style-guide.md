@@ -55,6 +55,15 @@ Zoom in and check every candidate. Reject if any of these appear:
 - **Edge slivers:** partial screens or signage at frame edges often carry faint model-drawn text. Croppable or patchable in the composite pass; reject only if it cannot be removed cleanly.
 - Impossible furniture, melted objects, physics that does not hold.
 
+Art-direction rules from Paul's batch-two review (2026-07-08):
+
+- **No person overlapping the composite screen.** Masking a subject back over the warped screenshot is off-recipe; the screen must be fully clear.
+- **No stacked screens.** A laptop in front of an external monitor reads wrong; one screen per desk scene.
+- **Workout scenes show the exercise.** Mid-rep (push-up, squat), not standing and looking at the TV. Resting reads as not working out.
+- **Kitchen scenes use a desk nook.** Never place the Mac beside the stove; the site is not advertising cooking hardware.
+- **Meetings:** no heads clipping the display; a video-call framing (one person, one monitor) is a valid alternative to a physical room.
+- **One image per near-duplicate composition.** When two candidates read the same (kids batch one), pick one, drop the other.
+
 A blown-out white screen where the composite goes is not a rejection on its own — the whole screen surface gets replaced. Dark-with-faint-glow is still the target because it keeps the scene's exposure honest.
 
 ## Structure: one image per cluster
@@ -130,6 +139,14 @@ First shipped set (presentation cluster, 2026-07-03): Cinema Studio Image 2.5 (`
 ### Model-combine fallback
 
 Feeding the scene plus the screenshot to an editing model (Nano Banana) preserved the digits, but it redrew the bezel rounder, wrapped the monitor in a halo glow, and re-rendered the whole frame brighter and smoother. Use it only when a manual fit fails, and forbid glow and bezel changes in the prompt.
+
+## Which timer capture goes on which screen
+
+The composite must show the UI state that surface would really display:
+
+- **Wall TV / projector screen / gym TV:** the full screen timer capture (`fullscreen-blue-2500.png`, or `tabata-dark-round.png` for workout scenes).
+- **Desk monitor / laptop:** a full desktop capture with the floating timer pinned over real work — a document, not an empty desktop. Needs a new real capture: desktop with Notes (or similar) open and the timer pinned in a corner. A video-call variant (call window + pinned timer) would serve the meetings cluster.
+- Never put the full screen timer on a desk monitor in a scene where someone is mid-document; it breaks the story the scene is telling.
 
 ## Workflow
 
