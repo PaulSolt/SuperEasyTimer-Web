@@ -10,6 +10,96 @@ import DownloadCTA from '../../components/DownloadCTA.astro';
 export function getStaticPaths() {
   const presets = [
     {
+      slug: '1-minute',
+      minutes: 1,
+      h1: '1 minute timer',
+      description:
+        'A free 1 minute timer, already set. Press start, or type a different time. Works in any browser, no sign-up.',
+      uses: [
+        {
+          lead: 'Game turns',
+          text: 'sixty seconds a turn keeps a',
+          linkText: 'game moving',
+          href: '/blog/game-timer-overlay',
+          after: '.',
+        },
+        {
+          lead: 'Speaking drills',
+          text: 'one minute answers, the',
+          linkText: 'Toastmasters table topics',
+          href: '/blog/toastmasters-timer',
+          after: 'length.',
+        },
+        {
+          lead: 'Planks',
+          text: 'hold for the full sixty, no counting in your head.',
+          linkText: null,
+          href: null,
+          after: '',
+        },
+      ],
+    },
+    {
+      slug: '2-minutes',
+      minutes: 2,
+      h1: '2 minute timer',
+      description:
+        'A free 2 minute timer, already set. Press start, or type a different time. Works in any browser, no sign-up.',
+      uses: [
+        {
+          lead: 'Brushing teeth',
+          text: 'the two minutes dentists ask for, on a',
+          linkText: 'timer kids can watch',
+          href: '/blog/visual-timer-for-kids',
+          after: '.',
+        },
+        {
+          lead: 'Rebuttals',
+          text: 'a',
+          linkText: 'debate timer',
+          href: '/blog/debate-timer',
+          after: 'for two minute responses.',
+        },
+        {
+          lead: 'Quick reset',
+          text: 'two minutes to clear the desk before the next task.',
+          linkText: null,
+          href: null,
+          after: '',
+        },
+      ],
+    },
+    {
+      slug: '3-minutes',
+      minutes: 3,
+      h1: '3 minute timer',
+      description:
+        'A free 3 minute timer, already set. Press start, or type a different time. Works in any browser, no sign-up.',
+      uses: [
+        {
+          lead: 'Eggs',
+          text: 'the classic three minute',
+          linkText: 'soft boiled egg',
+          href: '/blog/egg-timer-mac',
+          after: '.',
+        },
+        {
+          lead: 'Rounds',
+          text: 'boxing rounds run three minutes —',
+          linkText: 'repeat the timer',
+          href: '/blog/repeat-timer-with-delay',
+          after: 'with a rest between.',
+        },
+        {
+          lead: 'Tea',
+          text: 'a full steep without wandering off.',
+          linkText: null,
+          href: null,
+          after: '',
+        },
+      ],
+    },
+    {
       slug: '5-minutes',
       minutes: 5,
       h1: '5 minute timer',
@@ -33,6 +123,36 @@ export function getStaticPaths() {
         {
           lead: 'Reset',
           text: 'stand, stretch, refill the water, and get back to it.',
+          linkText: null,
+          href: null,
+          after: '',
+        },
+      ],
+    },
+    {
+      slug: '7-minutes',
+      minutes: 7,
+      h1: '7 minute timer',
+      description:
+        'A free 7 minute timer, already set — the length of the classic 7 minute workout. Press start, or type a different time.',
+      uses: [
+        {
+          lead: 'The 7 minute workout',
+          text: 'twelve exercises, 30 seconds each with short rests — run it against a',
+          linkText: 'workout timer',
+          href: '/blog/workout-timer-mac',
+          after: '.',
+        },
+        {
+          lead: 'Work and rest rounds',
+          text: 'an',
+          linkText: 'interval timer',
+          href: '/blog/interval-timer-mac',
+          after: 'handles the 30/10 pattern for you.',
+        },
+        {
+          lead: 'Eggs',
+          text: 'seven minutes is a jammy boiled egg.',
           linkText: null,
           href: null,
           after: '',
@@ -100,6 +220,36 @@ export function getStaticPaths() {
       ],
     },
     {
+      slug: '20-minutes',
+      minutes: 20,
+      h1: '20 minute timer',
+      description:
+        'A free 20 minute timer, already set. Press start, or type a different time. Works in any browser, no sign-up.',
+      uses: [
+        {
+          lead: 'Focus sprints',
+          text: 'twenty minutes is a',
+          linkText: 'study block',
+          href: '/blog/study-timer-mac',
+          after: 'short enough to actually start.',
+        },
+        {
+          lead: 'Oven checks',
+          text: 'set it when the tray goes in, not when you remember.',
+          linkText: null,
+          href: null,
+          after: '',
+        },
+        {
+          lead: 'Ending at a time',
+          text: 'need it done by 2:30 instead? Type "2:30pm" —',
+          linkText: 'countdown to a clock time',
+          href: '/blog/countdown-to-a-time',
+          after: '.',
+        },
+      ],
+    },
+    {
       slug: '25-minutes',
       minutes: 25,
       h1: '25 minute timer',
@@ -153,6 +303,36 @@ export function getStaticPaths() {
         {
           lead: 'Deep work',
           text: 'half an hour with the countdown in view.',
+          linkText: null,
+          href: null,
+          after: '',
+        },
+      ],
+    },
+    {
+      slug: '45-minutes',
+      minutes: 45,
+      h1: '45 minute timer',
+      description:
+        'A free 45 minute timer, already set. Press start, or type a different time. Works in any browser, no sign-up.',
+      uses: [
+        {
+          lead: 'Exam sections',
+          text: 'a forty five minute',
+          linkText: 'exam timer',
+          href: '/blog/exam-timer',
+          after: 'students can pace themselves by.',
+        },
+        {
+          lead: 'Talk slots',
+          text: 'a conference session with a',
+          linkText: 'speaker timer',
+          href: '/blog/speaker-timer',
+          after: 'in view.',
+        },
+        {
+          lead: 'Deep work',
+          text: 'one long block, then a real break.',
           linkText: null,
           href: null,
           after: '',

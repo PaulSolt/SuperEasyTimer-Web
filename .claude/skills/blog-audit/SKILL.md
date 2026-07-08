@@ -39,6 +39,8 @@ Only claim these behaviors. Anything else needs Paul's confirmation first.
 - Type to start: durations ("5 min", "90s", "2h 30m", bare "10"), clock times ("5pm", "10:30am"), presets ("pomodoro").
 - Adjust while running: "add 10 min", "+10m", "-1h"; no restart.
 - Placement: full screen, pinned above all windows, menu bar, on top of full screen apps (passive overlay, does not steal focus).
+- Closing the timer window keeps the countdown running in the menu bar (Paul confirmed 2026-07-07). Always write "close the timer window" — naming which window is what keeps the claim clear.
+- Source of truth for all feature claims: the App Store Connect description (captured verbatim in app.md at the repo root). The app source at ~/dev/SuperEasyTimer settles behavior questions the description does not cover.
 - End of timer: alarm sounds (including none), flash at zero, count up after zero, repeat with a delay.
 - Pause and resume by clicking the timer. Mini Mode resize.
 - Modes: Pomodoro, Tabata (work/rest/rounds), Stopwatch, Clock.
