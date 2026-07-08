@@ -63,6 +63,9 @@ Art-direction rules from Paul's batch-two review (2026-07-08):
 - **Kitchen scenes use a desk nook.** Never place the Mac beside the stove; the site is not advertising cooking hardware.
 - **Meetings:** no heads clipping the display; a video-call framing (one person, one monitor) is a valid alternative to a physical room.
 - **One image per near-duplicate composition.** When two candidates read the same (kids batch one), pick one, drop the other.
+- **The scene must match the scenario, not just the room.** A classroom hero for exam posts shows a test in progress — heads down, teacher grading — not a lecture. Ask "what does this moment actually look like?" before prompting.
+- **Hardware must be one family.** A Mac keyboard in front of a non-Mac monitor reads wrong (batch-two #16). Prompt matching aluminum/slim hardware; never name Apple, never allow logos.
+- **Zoom-call composites show the call.** The screen carries a real call-window capture with the timer pinned in a corner — a grid of participants, not a blank slab, because someone is watching the meeting.
 
 A blown-out white screen where the composite goes is not a rejection on its own — the whole screen surface gets replaced. Dark-with-faint-glow is still the target because it keeps the scene's exposure honest.
 
@@ -73,7 +76,7 @@ Seven images cover all 25+ posts. Posts share their cluster's image until a post
 | Image | Style | Scene | Posts |
 | --- | --- | --- | --- |
 | `presentation` | A | Presenter on stage facing a dark audience, confidence monitor at their feet showing the countdown | speaker-timer, powerpoint-countdown-timer, conference-timer, toastmasters-timer, big-timer-mac, presentation-timer-for-keynote |
-| `classroom` | A | Teacher at the front of a real classroom, countdown on the wall TV, students from behind | classroom-timer, exam-timer, quiz-timer, debate-timer |
+| `classroom` | A | An exam in progress: students heads down writing, teacher seated grading at the front, countdown on an unobstructed wall TV or projector screen | classroom-timer, exam-timer, quiz-timer, debate-timer |
 | `focus` | A or B | Dim desk at night, timer small in the corner of an external display | pomodoro-timer-mac, study-timer-mac, stopwatch-timer-mac, elapsed-time-timer, interval-timer-mac, timer-keyboard-shortcuts-mac, visual-timer-time-blindness |
 | `meetings` | A | Meeting room, countdown on the wall display, people mid-discussion | meeting-timer, zoom-timer-shared-screen, count-up-after-zero |
 | `workouts` | A | Home/garage gym, athlete resting between rounds, timer large on a screen | tabata-timer-mac, workout-timer-mac |
