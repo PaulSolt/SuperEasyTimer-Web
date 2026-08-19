@@ -13,7 +13,11 @@ export const site = {
 
   // Download links.
   // Provided in the brief.
-  macAppStoreUrl: 'https://apps.apple.com/app/id1353137878',
+  // Canonical US listing URL (slug verified via the iTunes lookup API; this
+  // exact form returns HTTP 200 with no redirect — the condensed
+  // /app/id1353137878 and the bare slug URL both 301 here). Country-relative
+  // URLs split link authority across regional listings; this consolidates it.
+  macAppStoreUrl: 'https://apps.apple.com/us/app/super-easy-timer/id1353137878?mt=12',
   // TestFlight public beta. Available until access is removed.
   testFlightUrl: 'https://testflight.apple.com/join/1jm4arcH',
   // TODO: Windows download link (after launch). Leave null to render "coming soon".
