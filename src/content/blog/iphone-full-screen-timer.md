@@ -39,7 +39,7 @@ Check it from your working position, not while it's in your hand. A countdown th
 
 ## The ending
 
-Fullscreen is about seeing the time. The sound at the end is set separately: tap the **Timer settings** button (the slider icon) on the timer, open **Alarms & Sound**, and pick a sound other than **No sound**. With the app open, that sound plays at the phone's volume.
+Fullscreen is about seeing the time. The sound at the end is set separately: tap the **Timer settings** button (the slider icon) on the timer, open **Alarms & Sound**, and pick a sound other than **No sound**. Then check the bell button on the timer. A bell with a slash means the timer's sound is muted; tap it so the plain bell shows. Run a one-minute timer with the app open to hear the ending before you rely on it.
 
 If you might lock the phone or leave the app before it ends, also turn on **Use System Alarm** and allow alarms when iOS asks; if you declined before, tap **Allow System Alarms**. Lock the phone through a one-minute timer once to hear the ending you'll get.
 

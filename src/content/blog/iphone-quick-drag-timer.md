@@ -42,7 +42,7 @@ If you went through the app's tutorial and missed the target a few times in a ro
 
 ## Choose the times in the picker
 
-In the Settings tab, under **Quick Actions**, tap **Customize** to choose which times appear when you drag. Put your three most-used times in, and the drag gets shorter.
+In the Settings tab, under **Quick Actions**, tap **Customize**, then **Timer**, to choose which times appear when you drag. Put your three most-used times in, and the drag gets shorter.
 
 **Sound Effects** in the same section turns the drag's sounds on or off. **Haptics** next to it covers the app's vibrations in general, including the ticks you feel as you slide.
 
