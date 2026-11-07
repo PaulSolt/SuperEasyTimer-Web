@@ -27,14 +27,14 @@ With the default settings, letting go sets the timer and starts it. Two switches
 
 Turn off **Start Quick Actions Instantly** if you tend to let go one step early and want a chance to check. Turn off **Auto-Start Quick Actions** if you like to pick the time while you set up and tap Play when you start.
 
-**Start timers automatically** is a different switch. It covers typed times only, so changing it won't change what the drag does.
+**Start timers automatically** is a different switch. It covers typed times only, so changing it will not change what the drag does.
 
 ## When the picker stays open
 
 Sometimes the picker waits for you even with **Start Quick Actions Instantly** on:
 
 - **You dragged to the very top.** The picker parks there so you can pick calmly instead of on release. Tap the time you want, then ✓.
-- **You use VoiceOver or Switch Control.** The picker always uses the confirm step, so each choice is announced before it's set.
+- **You use VoiceOver or Switch Control.** The picker always uses the confirm step, so each choice is announced before it is set.
 
 Either way, finish the visible step, then look for the seconds moving. A picked time and a running timer look alike for the first second.
 

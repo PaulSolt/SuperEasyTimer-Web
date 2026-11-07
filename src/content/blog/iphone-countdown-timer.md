@@ -15,7 +15,7 @@ When you know how long you need, typing it is faster than spinning hour and minu
 1. Tap the time input.
 2. Type `5 min`, and read the time the app shows it will set before you submit.
 3. Submit the entry.
-4. If the display holds at 5:00, tap Play. If the seconds are already moving, **Start timers automatically** is on and it's running.
+4. If the display holds at 5:00, tap Play. If the seconds are already moving, **Start timers automatically** is on and it is running.
 
 Watch the seconds tick before you put the phone down. A time waiting on screen and a running countdown look alike at first glance.
 
@@ -40,7 +40,7 @@ The Settings tab has two start switches, and they cover different ways of settin
 | **Start timers automatically** | Typed durations | Off | Submitting stages the time; you tap Play | Submitting starts the countdown |
 | **Auto-Start Quick Actions** | Times picked by dragging up from the + button | On | The picked time waits for Play | The picked time starts |
 
-So by default a typed duration waits for Play and a dragged one starts on its own. A clock time like `5pm` starts right away either way. Leave typed auto-start off when you want to set up first: type `10 min`, get your notes in order, and tap Play when you begin. Turn it on when you're always ready the moment you submit.
+So by default a typed duration waits for Play and a dragged one starts on its own. A clock time like `5pm` starts right away either way. Leave typed auto-start off when you want to set up first: type `10 min`, get your notes in order, and tap Play when you begin. Turn it on when you are always ready the moment you submit.
 
 The drag-up gesture also has a confirm switch, **Start Quick Actions Instantly**, in the Settings tab's **Quick Actions** section.
 
