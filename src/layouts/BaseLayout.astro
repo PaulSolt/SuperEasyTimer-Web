@@ -9,9 +9,10 @@ interface Props {
   description?: string;
   ogImage?: string;
   noindex?: boolean;
+  platform?: 'mac' | 'ios';
 }
 
-const { title, description, ogImage, noindex } = Astro.props;
+const { title, description, ogImage, noindex, platform = 'mac' } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +22,7 @@ const { title, description, ogImage, noindex } = Astro.props;
   </head>
   <body>
     <a href="#main" class="sr-only">Skip to content</a>
-    <Header />
+    <Header platform={platform} />
     <main id="main">
       <slot />
     </main>
