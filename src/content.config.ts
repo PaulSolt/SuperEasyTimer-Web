@@ -19,6 +19,8 @@ const blog = defineCollection({
     keyword: z.string(),
     // Topic cluster (e.g. "Presentation timers", "Focus / productivity").
     cluster: z.string(),
+    // Existing articles keep their Mac download CTA unless explicitly marked iOS.
+    platform: z.enum(['mac', 'ios']).default('mac'),
     // Optional hero/subject image shown at the top of the post and on the index.
     heroImage: z.string().optional(),
     heroAlt: z.string().optional(),

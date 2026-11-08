@@ -1,6 +1,12 @@
 ---
 import { site } from '../config/site';
 
+interface Props {
+  platform?: 'mac' | 'ios';
+}
+const { platform = 'mac' } = Astro.props;
+const isIOS = platform === 'ios';
+
 const links = [
   { href: '/timer', label: 'Web Timer' },
   { href: '/blog', label: 'Blog' },
@@ -37,16 +43,16 @@ const isActive = (href: string) =>
     </nav>
 
     <a
-      href={site.macAppStoreUrl}
+      href={isIOS ? site.iosAppStoreUrl : site.macAppStoreUrl}
       rel="noopener"
       target="_blank"
       class="btn btn--primary header-cta"
       data-ga="download_intent"
-      data-ga-platform="mac_app_store"
+      data-ga-platform={isIOS ? 'ios_app_store' : 'mac_app_store'}
       data-ga-location="header"
     >
-      <span>Get the Mac app</span>
-      <small class="header-cta-sub">macOS {site.minMacOS}+</small>
+      <span>{isIOS ? 'Get the iPhone app' : 'Get the Mac app'}</span>
+      <small class="header-cta-sub">{isIOS ? 'App Store' : `macOS ${site.minMacOS}+`}</small>
     </a>
   </div>
 </header>

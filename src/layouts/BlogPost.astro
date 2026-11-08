@@ -56,12 +56,15 @@ const clusterCTAs: Record<string, { heading: string; body: string }> = {
     body: 'Get the free Mac app with transparent, frosted, and Liquid Glass themes.',
   },
 };
-const cta = clusterCTAs[cluster];
+const cta = post.data.platform === 'ios'
+  ? { heading: 'Set your next timer on iPhone.', body: 'Get Super Easy Timer for iPhone on the App Store.' }
+  : clusterCTAs[cluster];
 
 const formattedDate = publishDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
+  timeZone: 'UTC',
 });
 
 // BlogPosting structured data so posts are eligible for article rich results.
@@ -78,7 +81,7 @@ const postSchema = {
 };
 ---
 
-<BaseLayout title={title} description={description} ogImage={socialImage}>
+<BaseLayout title={title} description={description} ogImage={socialImage} platform={post.data.platform}>
   <script type="application/ld+json" set:html={JSON.stringify(postSchema)} is:inline />
   <article class="post">
     <div class="container post-narrow">
@@ -94,7 +97,7 @@ const postSchema = {
       {
         heroImage && (
           <figure class="post-hero">
-            <img src={heroImage} alt={heroAlt ?? title} width="1600" height="1000" />
+            <img src={heroImage} alt={heroAlt ?? title} width="1600" height={post.data.platform === 'ios' ? 900 : 1000} />
           </figure>
         )
       }
@@ -103,7 +106,7 @@ const postSchema = {
         <slot />
       </div>
 
-      <DownloadCTA compact location="blog" heading={cta?.heading} body={cta?.body} />
+      <DownloadCTA compact location="blog" platform={post.data.platform} heading={cta?.heading} body={cta?.body} />
     </div>
   </article>
 </BaseLayout>
@@ -143,6 +146,69 @@ const postSchema = {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .post-body :global(.table-scroll) {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-block: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .post-body :global(.table-scroll:focus-visible) {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+  }
+  .post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .post-body :global(th),
+  .post-body :global(td) {
+    overflow-wrap: anywhere;
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+  }
+  @media (max-width: 480px) {
+    .post-body :global(table) {
+      table-layout: fixed;
+      font-size: 0.9375rem;
+    }
+    .post-body :global(th),
+    .post-body :global(td) {
+      padding: 0.625rem 0.5rem;
+    }
+  }
+  .post-body :global(th) {
+    color: var(--text);
+    background: var(--bg-elevated);
+  }
+  .post-body :global(tr:last-child td) {
+    border-bottom: 0;
+  }
+  .post-body :global(.demo-video) {
+    margin-block: 1.5rem;
+  }
+  .post-body :global(video) {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+  .post-body :global(figcaption),
+  .post-body :global(p.capture-note) {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .post-body :global(figcaption) {
+    margin-top: 0.625rem;
   }
 
   /* Long-form typography. */

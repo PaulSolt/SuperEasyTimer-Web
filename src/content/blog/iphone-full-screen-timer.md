@@ -1,23 +1,28 @@
 ---
 title: Make your iPhone a full-screen countdown timer
-description: Tap Fullscreen in Super Easy Timer and the countdown fills your iPhone
-  screen. Open it by hand or by rotating, keep the screen from locking, and close
-  it with X.
+description: Start a timer in Super Easy Timer, tap Fullscreen, and the countdown
+  fills your iPhone screen. Here is how to open it by hand or by rotating, keep the
+  screen on, and close it with X.
 publishDate: '2026-11-07'
 keyword: full screen timer iphone
 cluster: Presentation timers
-draft: true
+platform: ios
+heroImage: /media/iphone-fullscreen-studio.jpg
+heroAlt: Super Easy Timer showing a full-screen countdown on iPhone.
+draft: false
 ---
+
+<p class="capture-note">Captured in the iPhone simulator with Super Easy Timer 3.0.1; the App Store version may look different.</p>
 
 Prop your iPhone against a mug, a book or a stand, and it becomes a desk clock for your task. Fullscreen gives the countdown the whole screen, so you can read it from your chair while you rehearse, write on paper, or work on something that is not the phone.
 
 ## Open Fullscreen
 
-1. Type the time, such as `10 min`, and submit it. If the display holds at 10:00, tap Play; with **Start timers automatically** on, it is already running.
-2. Tap the **Fullscreen** button, the two-arrow icon at the top-right of the timer card.
+1. Type the time, such as `25`, and tap the blue up arrow. If the display holds at 25:00, tap Play; with **Start timers automatically** on, it is already running.
+2. Once the timer starts, tap the **Fullscreen** button, the two-arrow icon at the top-right of the timer card.
 3. Set the phone down where you will look at it.
 
-Tap anywhere on the countdown to show or hide its controls. Pause and Play are there, so you do not have to leave Fullscreen to stop for a minute.
+Tap anywhere on the countdown to show or hide its controls. You can pause there and tap the triangle button to resume, without leaving Fullscreen.
 
 To leave, tap to show the controls, then tap X.
 
@@ -25,7 +30,7 @@ To leave, tap to show the controls, then tap X.
 
 Either works. Landscape usually makes the digits bigger when the phone lies on its side against something.
 
-To have turning the phone open Fullscreen for you, turn on **Rotate to Go Full Screen** in the Settings tab. It's off by default. Turning the phone back upright does not close Fullscreen; tap X for that. Closing keeps the orientation the phone is in.
+To have turning the phone open Fullscreen for you, turn on **Rotate to Go Full Screen** in the Settings tab. It is off by default. Turning the phone back upright does not close Fullscreen; tap X for that. Closing keeps the orientation the phone is in.
 
 ## Stop the screen from going dark
 
@@ -37,10 +42,4 @@ It keeps the screen on while a timer is running and Super Easy Timer is open, an
 
 Check it from your working position, not while it is in your hand. A countdown that is clear at arm's length can be hard to read beside a notebook with a lamp reflecting off it. Angle the phone away from the light.
 
-## The ending
-
-Fullscreen is about seeing the time. The sound at the end is set separately: tap the **Timer settings** button (the slider icon) on the timer, open **Alarms & Sound**, and pick a sound other than **No sound**. Then check the bell button on the timer. A bell with a slash means the timer's sound is muted; tap it so the plain bell shows. Run a one-minute timer with the app open to hear the ending before you rely on it.
-
-If you might lock the phone or leave the app before it ends, also turn on **Use System Alarm** and allow alarms when iOS asks; if you declined before, tap **Allow System Alarms**. Lock the phone through a one-minute timer once to hear the ending you will get.
-
-[Get Super Easy Timer for iPhone](https://apps.apple.com/us/app/super-easy-timer/id1353137878) and prop it up for your next practice session.
+Start the timer, tap Fullscreen, and set the phone where you can glance at it while you work.
